@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
                   decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('assets/images/VestergaardSnow.png'),
-                      fit: BoxFit.cover, // Ensures the image covers the full screen
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -51,9 +51,9 @@ class MyApp extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.black54, // Slightly darker at the top
-                        Colors.transparent, // Fades to transparent
-                        Colors.black54, // Slightly darker at the bottom
+                        Colors.black54,
+                        Colors.transparent,
+                        Colors.black54,
                       ],
                       stops: [0.0, 0.5, 1.0], // Control gradient stops
                     ),
@@ -105,12 +105,12 @@ class MyApp extends StatelessWidget {
                               "Select source for presentation:",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: screenHeight * 0.0475, // Increased font size
-                                fontWeight: FontWeight.w700, // Extra bold
-                                color: Colors.white, // White text for visibility
+                                fontSize: screenHeight * 0.0475,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
                               ),
                             ),
-                            SizedBox(height: screenHeight * 0.02), // Spacing below title
+                            SizedBox(height: screenHeight * 0.02),
                             // Toggle Buttons
                             const Expanded(
                               child: ToggleButtonsWidget(
@@ -134,8 +134,8 @@ class MyApp extends StatelessWidget {
                     ),
                     // Turn Off Screen Button at the bottom right
                     Positioned(
-                      bottom: screenHeight * 0.03, // Scaled from screen height
-                      right: screenWidth * 0.02,   // Scaled from screen width
+                      bottom: screenHeight * 0.03,
+                      right: screenWidth * 0.02,
                       child: Tooltip(
                         message: "Slukker den store skærm",
                         child: ElevatedButton.icon(
@@ -143,30 +143,30 @@ class MyApp extends StatelessWidget {
                             sendButtonPress(0); // Special ID for "Turn Off"
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.transparent, // Transparent background
-                            foregroundColor: Colors.white, // White text and icon color
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
                             side: BorderSide(
-                              color: Colors.white, // White border
-                              width: screenWidth * 0.002, // Thin border scaled with screen width
+                              color: Colors.white,
+                              width: screenWidth * 0.002,
                             ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(screenHeight * 0.02), // Scaled corner radius
+                              borderRadius: BorderRadius.circular(screenHeight * 0.02),
                             ),
                             padding: EdgeInsets.symmetric(
-                              vertical: screenHeight * 0.0175, // Scaled vertical padding
-                              horizontal: screenWidth * 0.02, // Scaled horizontal padding
+                              vertical: screenHeight * 0.0175,
+                              horizontal: screenWidth * 0.02,
                             ),
-                            elevation: 0, // No shadow for a clean look
+                            elevation: 0,
                           ),
                           icon: Icon(
                             Icons.power_settings_new,
-                            size: screenHeight * 0.04, // Scaled icon size
+                            size: screenHeight * 0.04, 
                           ),
                           label: Text(
                             "Sluk Skærm",
                             style: TextStyle(
-                              fontSize: screenHeight * 0.02, // Scaled font size
-                              fontWeight: FontWeight.bold, // Bold text
+                              fontSize: screenHeight * 0.02,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -212,9 +212,9 @@ class _ToggleButtonsWidgetState extends State<ToggleButtonsWidget> {
       children: List.generate(widget.imagePaths.length, (index) {
         return Expanded(
           child: Padding(
-            padding: EdgeInsets.all(screenHeight * 0.02), // Consistent padding
+            padding: EdgeInsets.all(screenHeight * 0.02),
             child: AspectRatio(
-              aspectRatio: 1, // Ensures square buttons
+              aspectRatio: 1,
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -224,18 +224,18 @@ class _ToggleButtonsWidgetState extends State<ToggleButtonsWidget> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: selectedIndex == index
-                      ? const Color(0xFFFDC830) // Golden-yellow when selected
-                      : Colors.white, // Default background
-                  foregroundColor: Colors.black, // Text color
+                      ? const Color(0xFFFDC830)
+                      : Colors.white,
+                  foregroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16), // Smooth edges
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  elevation: 4, // Button shadow for depth
+                  elevation: 4, 
                   shadowColor: Colors.black54,
                   side: BorderSide(
                     color: selectedIndex == index
-                        ? const Color(0xFFE4A411) // Gold border when selected
-                        : Colors.black12, // Subtle gray border for others
+                        ? const Color(0xFFE4A411)
+                        : Colors.black12,
                     width: 2,
                   ),
                 ),
@@ -243,7 +243,7 @@ class _ToggleButtonsWidgetState extends State<ToggleButtonsWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                      flex: 2, // Image area
+                      flex: 2,
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 200),
                         curve: Curves.easeInOut,
@@ -252,23 +252,23 @@ class _ToggleButtonsWidgetState extends State<ToggleButtonsWidget> {
                           widget.imagePaths[index],
                           fit: BoxFit.contain,
                           color: selectedIndex == index
-                              ? Colors.white // Slight tint for selected
+                              ? Colors.white
                               : Colors.black87,
                         ),
                       ),
                     ),
                     const SizedBox(height: 10),
                     Flexible(
-                      flex: 1, // Text area
+                      flex: 1,
                       child: Text(
                         widget.buttonTexts[index],
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: screenHeight * 0.03, // Responsive font
-                          fontWeight: FontWeight.w600, // Semi-bold
+                          fontSize: screenHeight * 0.03,
+                          fontWeight: FontWeight.w600,
                           color: selectedIndex == index
-                              ? Colors.black87 // Darker text when selected
-                              : Colors.black54, // Subtle gray otherwise
+                              ? Colors.black87
+                              : Colors.black54,
                         ),
                       ),
                     ),
