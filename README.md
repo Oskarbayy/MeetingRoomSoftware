@@ -7,6 +7,10 @@ A user-friendly solution for managing HDMI switchers via RS232 communication, de
 - Reliable RS232 Connection: Sends and reads commands over a serial connection.
 - Client-Friendly UI: Simple buttons for non-technical users.
 
+### Example UI:
+![Alt Text](frontend/assets/images/MeetingRoomSoftware.png)
+
+
 ## Technologies Used
 ### Frontend
 - Flutter - Front-end interface using Dart.
