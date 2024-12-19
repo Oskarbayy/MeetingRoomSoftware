@@ -10,17 +10,40 @@ Process? serverProcess;
 
 void startGoServer() async {
   try {
-    // Start the Go server executable
-    serverProcess = await Process.start('assets/server/server.exe', []);
+    // problems with the paths so mega ultra hardcoded, until it worked.
+    final currentDir = Directory.current.path;
+    final serverPath = '$currentDir/assets/server/server.exe';
+    final serverWorkingDir = '$currentDir/assets/server';
+
+    if (!File(serverPath).existsSync()) {
+      print('Error: $serverPath does not exist.');
+      return;
+    }
+
+    serverProcess = await Process.start(
+      serverPath,
+      [],
+      workingDirectory: serverWorkingDir,
+      runInShell: true,
+    );
+
+    serverProcess?.stdout.transform(SystemEncoding().decoder).listen((data) {
+      print('Server stdout: $data');
+    });
+
+    serverProcess?.stderr.transform(SystemEncoding().decoder).listen((data) {
+      print('Server stderr: $data');
+    });
+
     print('Go server started.');
   } catch (e) {
     print('Error starting Go server: $e');
   }
 }
 
+
 void stopGoServer() {
   try {
-    // Gracefully kill the Go server process
     serverProcess?.kill();
     print('Go server stopped.');
   } catch (e) {
@@ -43,7 +66,6 @@ Future<void> sendButtonPress(int buttonID) async {
   }
 }
 
-// Use WidgetsBindingObserver to detect app lifecycle changes
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -73,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    stopGoServer(); // Stop the Go server when the app is disposed
+    stopGoServer(); // Stop the Go server when the app is dead
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
