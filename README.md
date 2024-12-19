@@ -7,6 +7,10 @@ A user-friendly solution for managing HDMI switchers via RS232 communication, de
 - Reliable RS232 Connection: Sends and reads commands over a serial connection.
 - Client-Friendly UI: Simple buttons for non-technical users.
 
+### Example UI:
+![Alt Text](frontend/assets/images/MeetingRoomSoftware.png)
+
+
 ## Technologies Used
 ### Frontend
 - Flutter - Front-end interface using Dart.
@@ -16,6 +20,32 @@ A user-friendly solution for managing HDMI switchers via RS232 communication, de
 - Gorilla Mux - REST API routing.
 - go.bug.st/serial - Serial port management.
 
+## Configuration
+The backend uses a config.json file to define:
+
+- **Port settings:** Specify the RS232 connection details (e.g., device, baud_rate) as provided in the HDMI switcher manual.
+- **Commands:** Easily map labeled commands (e.g., input_1, turn_off) to the RS232 commands for your HDMI switcher.
+- **Startup Commands:** Add commands to run automatically when the server starts.
+```
+{
+    "device": "COM11",
+    "baud_rate": 9600,
+    "data_bits": 8,
+    "stop_bits": 1,
+    "parity": "none",
+    "labeled_commands": {
+        "input_1": ">>HDMI1",
+        "input_2": ">>HDMI2",
+        "input_3": ">>HDMI3",
+        "input_4": ">>HDMI4",
+        "turn_off": ">>TVOff"
+    },
+    "startup_commands": [
+        ">>MANUAL",
+        ">>HDMI1"
+    ]
+}
+```
 ## Setup
 ### 1. Backend
 - Install Go: Go Installation
@@ -38,8 +68,8 @@ flutter run
 ```
 ## API Reference
 ### Switch Input
--URL: POST /api/button/{id}
--IDs:
+- URL: POST /api/button/{id}
+- IDs:
   - 1: Laptop PC Wireless
   - 2: Meeting Room PC
   - 3: Other AV Devices
