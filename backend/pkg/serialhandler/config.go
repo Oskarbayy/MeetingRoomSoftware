@@ -14,6 +14,7 @@ type Config struct {
 	Parity          string            `json:"parity"`
 	LabeledCommands map[string]string `json:"labeled_commands"`
 	StartupCommands []string          `json:"startup_commands"`
+	ServerPort      int               `json:"server_port"`
 }
 
 func LoadConfig(filePath string) (*Config, error) {

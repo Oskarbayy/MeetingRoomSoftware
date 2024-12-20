@@ -1,0 +1,17 @@
+{
+    "device": "COM11",
+    "baud_rate": 19200,
+    "data_bits": 8,
+    "stop_bits": 1,
+    "parity": "none",
+    "labeled_commands": {
+        "input_1": "sw i01",
+        "input_2": "sw i02",
+        "input_3": "sw i03",
+        "input_4": ">>sw i04",
+        "turn_off": ">>TVOff"
+    },
+    "startup_commands": [
+    ],
+    "server_port": 8080
+}

@@ -1,58 +1,154 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
+import 'dart:convert';
+import 'package:window_manager/window_manager.dart';
+import 'package:flutter/services.dart'; // For keyboard events
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
+  await windowManager.ensureInitialized(); // Initialize window_manager
+  loadConfig();
   runApp(const MyApp());
+
+  // Add key event handler to handle Enter and Escape keys
+  ServicesBinding.instance.keyboard.addHandler(_onKey);
 }
 
 Process? serverProcess;
 
-void startGoServer() async {
-  try {
-    // problems with the paths so mega ultra hardcoded, until it worked.
-    final currentDir = Directory.current.path;
-    final serverPath = '$currentDir/assets/server/server.exe';
-    final serverWorkingDir = '$currentDir/assets/server';
+// Key event handler to toggle full-screen
+bool fullscreen = false;
+bool _onKey(KeyEvent event) {
+  if (event is KeyDownEvent) {
+    if (event.logicalKey == LogicalKeyboardKey.f11) {
+      if (fullscreen == true) {
+        // Exit full-screen and restore the window to normal mode
+        windowManager.setFullScreen(false);
+        print('Exiting full-screen mode');
+        fullscreen = false;
+      }
+      else 
+      {
+        // Enter full-screen mode
+        windowManager.setFullScreen(true);
+        print('Entering full-screen mode');
+        fullscreen = true;
+      }
+    }
+  }
+  return false;
+}
 
+Future<void> startGoServer() async {
+  try {
+    // Define currentDir in the scope of the method
+    final currentDir = Directory.current.path;
+
+    // Hardcoded paths for release mode
+    final serverPath = '$currentDir/server.exe';
+
+    // Log file path
+    final logFilePath = '$currentDir/log.txt';
+    final logFile = File(logFilePath);
+
+    // Ensure the log file exists, create if not
+    if (!await logFile.exists()) {
+      await logFile.create();
+    }
+
+    // Debugging: Write the config path to the log
+    await logFile.writeAsString('Server stdout: $serverPath\n', mode: FileMode.append);
+
+    // Check if the server file exists
     if (!File(serverPath).existsSync()) {
       print('Error: $serverPath does not exist.');
+      await logFile.writeAsString('Error: $serverPath does not exist.\n', mode: FileMode.append);
       return;
     }
 
+    // Launch the server
     serverProcess = await Process.start(
       serverPath,
       [],
-      workingDirectory: serverWorkingDir,
+      workingDirectory: currentDir,  // Ensure the correct working directory
       runInShell: true,
     );
 
-    serverProcess?.stdout.transform(SystemEncoding().decoder).listen((data) {
+    // Handle stdout (standard output) and write to log
+    serverProcess?.stdout.transform(SystemEncoding().decoder).listen((data) async {
       print('Server stdout: $data');
+      await logFile.writeAsString('Server stdout: $data\n', mode: FileMode.append);
     });
 
-    serverProcess?.stderr.transform(SystemEncoding().decoder).listen((data) {
+    // Handle stderr (standard error) and write to log
+    serverProcess?.stderr.transform(SystemEncoding().decoder).listen((data) async {
       print('Server stderr: $data');
+      await logFile.writeAsString('Server stderr: $data\n', mode: FileMode.append);
     });
 
     print('Go server started.');
+    await logFile.writeAsString('Go server started.\n', mode: FileMode.append);
+
   } catch (e) {
     print('Error starting Go server: $e');
+    final currentDir = Directory.current.path;  // Ensure this is defined if an error occurs
+    final logFilePath = '$currentDir/log.txt';
+    final logFile = File(logFilePath);
+    await logFile.writeAsString('Error starting Go server: $e\n', mode: FileMode.append);
   }
 }
 
 
-void stopGoServer() {
+void stopGoServer() async {
   try {
-    serverProcess?.kill();
-    print('Go server stopped.');
+    if (serverProcess != null) {
+      print("Stopping Go server...");
+      // Kill the server process
+      await Process.run('taskkill', ['/F', '/IM', 'server.exe']);
+      print('All server.exe processes terminated.');
+
+      await serverProcess?.exitCode;
+      print('Exit code: ${await serverProcess?.exitCode}');
+
+
+      print('Go server stopped.');
+    } else {
+      print('No server process found.');
+    }
   } catch (e) {
     print('Error stopping Go server: $e');
   }
 }
 
+Map<String, dynamic>? appConfig;
+
+Future<void> loadConfig() async {
+  try {
+    final currentDir = Directory.current.path;
+    final configFilePath = '$currentDir\\config.json';
+
+    if (!File(configFilePath).existsSync()) {
+      print('Config file not found at $configFilePath');
+      return;
+    }
+
+    final configContent = await File(configFilePath).readAsString();
+    appConfig = jsonDecode(configContent);
+    print('Config loaded: $appConfig');
+  } catch (e) {
+    print('Error loading config: $e');
+  }
+}
+
 Future<void> sendButtonPress(int buttonID) async {
-  final url = Uri.parse('http://localhost:8080/api/button/$buttonID');
+  if (appConfig == null) {
+    print('Config not loaded. Cannot send button press.');
+    return;
+  }
+
+  final serverPort = appConfig?['server_port'] ?? 8080;
+  final url = Uri.parse('http://localhost:$serverPort/api/button/$buttonID');
 
   try {
     final response = await http.post(url);
@@ -89,21 +185,27 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
-    startGoServer(); // Start the Go server when the app initializes
+    WidgetsBinding.instance.addObserver(this); // Listen to lifecycle events
+    startGoServer(); // Start the server when the widget initializes
   }
 
   @override
   void dispose() {
-    stopGoServer(); // Stop the Go server when the app is dead
-    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+    // Stop the Go server when the app is closed or detached
+    stopGoServer();
   }
+
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.detached) {
-      stopGoServer(); // Stop the Go server if the app is detached
+      print('App is being detached. Stopping server...');
+      stopGoServer();
+    } else if (state == AppLifecycleState.inactive) {
+      print('App is inactive.');
+    } else if (state == AppLifecycleState.paused) {
+      print('App is paused.');
     }
   }
 
