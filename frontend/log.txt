@@ -1,0 +1,85 @@
+Go server started.
+Server stderr: 2024/12/20 10:50:22 Serial port successfully opened
+2024/12/20 10:50:22 Running startup commands...
+2024/12/20 10:50:22 Server is listening on port 8080
+
+Server stderr: 2024/12/20 10:50:23 Command sent to COM11: sw i02
+
+Server stderr: 2024/12/20 10:50:23 Received: sw i02 Command OK
+
+Server stderr: 2024/12/20 10:50:23 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 10:50:23 Received: sw i01 Command OK
+
+Go server started.
+Server stderr: 2024/12/20 11:02:11 Failed to load configuration: open C:\Users\osha\AppData\Local\Temp\config.json: The system cannot find the file specified.
+
+Go server started.
+Server stderr: 2024/12/20 11:02:55 Serial port successfully opened
+2024/12/20 11:02:55 Running startup commands...
+2024/12/20 11:02:55 Server is listening on port 8080
+
+Server stderr: 2024/12/20 11:02:56 Command sent to COM11: sw i03
+
+Server stderr: 2024/12/20 11:02:56 Received: sw i03 Command OK
+
+Server stderr: 2024/12/20 11:02:56 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:02:56 Received: sw i01 Command OK
+
+Go server started.
+Server stderr: 2024/12/20 11:14:30 Serial port successfully opened
+2024/12/20 11:14:30 Running startup commands...
+2024/12/20 11:14:30 Server is listening on port 8080
+
+Server stderr: 2024/12/20 11:14:30 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:14:30 Received: sw i01 Command OK
+
+Server stderr: 2024/12/20 11:14:31 Command sent to COM11: sw i02
+
+Server stderr: 2024/12/20 11:14:31 Received: sw i02 Command OK
+
+Server stderr: 2024/12/20 11:14:31 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:14:32 Received: sw i01 Command OK
+
+Server stderr: 2024/12/20 11:14:32 Command sent to COM11: sw i02
+
+Server stderr: 2024/12/20 11:14:32 Received: sw i02 Command OK
+
+Server stderr: 2024/12/20 11:14:34 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:14:34 Received: sw i01 Command OK
+
+Go server started.
+Server stderr: 2024/12/20 11:21:00 Failed to load configuration: read C:\Users\osha\Desktop\MeetingRoomSoftware\frontend: Incorrect function.
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/assets/server/server.exe
+Go server started.
+Server stderr: 2024/12/20 11:25:36 Serial port successfully opened
+2024/12/20 11:25:36 Running startup commands...
+2024/12/20 11:25:36 Server is listening on port 8080
+
+Server stderr: 2024/12/20 11:25:37 Command sent to COM11: sw i02
+
+Server stderr: 2024/12/20 11:25:37 Received: sw i02 Command OK
+
+Server stderr: 2024/12/20 11:25:37 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:25:37 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/20 11:35:19 Serial port successfully opened
+2024/12/20 11:35:19 Running startup commands...
+2024/12/20 11:35:19 Server is listening on port 8080
+
+Server stderr: 2024/12/20 11:35:20 Command sent to COM11: sw i02
+
+Server stderr: 2024/12/20 11:35:20 Received: sw i02 Command OK
+
+Server stderr: 2024/12/20 11:35:21 Command sent to COM11: sw i01
+
+Server stderr: 2024/12/20 11:35:21 Received: sw i01 Command OK
+
