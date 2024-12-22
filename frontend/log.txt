@@ -83,3 +83,225 @@ Server stderr: 2024/12/20 11:35:21 Command sent to COM11: sw i01
 
 Server stderr: 2024/12/20 11:35:21 Received: sw i01 Command OK
 
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:31:26 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:34:58 Serial port successfully opened
+2024/12/22 10:34:58 Running startup commands...
+2024/12/22 10:34:58 Server is listening on port 8080
+
+Server stderr: 2024/12/22 10:35:01 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 10:35:01 Received: <<HDMI2
+
+Server stderr: 2024/12/22 10:35:03 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 10:35:03 Received: <<HDMI1
+
+Server stderr: 2024/12/22 10:35:04 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 10:35:04 Received: <<HDMI3
+
+Server stderr: 2024/12/22 10:35:04 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 10:35:04 Received: <<HDMI4
+
+Server stderr: 2024/12/22 10:35:06 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 10:35:06 Received: <<HDMI1
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:41:45 Serial port successfully opened
+2024/12/22 10:41:45 Running startup commands...
+2024/12/22 10:41:45 Server is listening on port 8080
+
+Server stderr: 2024/12/22 10:41:53 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 10:41:53 Received: <<HDMI2
+
+Server stderr: 2024/12/22 10:41:59 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 10:41:59 Received: <<HDMI3
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:46:52 Serial port successfully opened
+2024/12/22 10:46:52 Running startup commands...
+2024/12/22 10:46:52 Server is listening on port 8080
+
+Server stderr: 2024/12/22 10:46:54 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 10:46:54 Received: <<HDMI2
+
+Server stderr: 2024/12/22 10:46:55 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 10:46:55 Received: <<HDMI3
+
+Server stderr: 2024/12/22 10:46:56 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 10:46:56 Received: <<HDMI1
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:47:02 Serial port successfully opened
+2024/12/22 10:47:02 Running startup commands...
+2024/12/22 10:47:02 Server is listening on port 8080
+
+Server stderr: 2024/12/22 10:47:02 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 10:47:02 Received: <<HDMI2
+
+Server stderr: 2024/12/22 10:47:06 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 10:47:06 Received: <<HDMI3
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 10:47:09 Serial port successfully opened
+2024/12/22 10:47:09 Running startup commands...
+2024/12/22 10:47:09 Server is listening on port 8080
+
+Server stderr: 2024/12/22 10:47:10 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 10:47:10 Received: <<HDMI2
+
+Server stderr: 2024/12/22 10:47:11 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 10:47:11 Received: <<HDMI1
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:04:13 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:04:21 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:04:24 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:04:28 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:05:04 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:05:14 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:05:58 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:06:01 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:06:07 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:13:24 Serial port successfully opened
+2024/12/22 11:13:24 Running startup commands...
+2024/12/22 11:13:24 Server is listening on port 12345
+
+Server stderr: 2024/12/22 11:13:26 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:13:26 Received: <<HDMI2
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:13:33 Running startup commands...
+2024/12/22 11:13:33 Server is listening on port 12345
+
+Server stderr: 2024/12/22 11:13:34 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:34 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:35 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:13:35 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:13:36 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:13:36 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:13:37 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:37 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:38 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:13:38 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:13:39 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:39 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:13:40 Received: <<HDMI3
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:13:43 Running startup commands...
+2024/12/22 11:13:43 Server is listening on port 12345
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:26:44 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:29:14 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:29:24 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:30:03 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:31:35 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:33:33 Failed to initialize serial port: Serial port busy
+
