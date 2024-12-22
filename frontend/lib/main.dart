@@ -199,11 +199,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.detached) {
-      print('App is being detached. Stopping server...');
+    print(state);
+    if (state == AppLifecycleState.inactive) {
+      print('App is inactive. Stopping server...');
       stopGoServer();
-    } else if (state == AppLifecycleState.inactive) {
-      print('App is inactive.');
+    } else if (state == AppLifecycleState.resumed) {
+      loadConfig();
+      startGoServer(); // Start the server when the widget initializes
+      print('App is resumed - server started.');
     } else if (state == AppLifecycleState.paused) {
       print('App is paused.');
     }
