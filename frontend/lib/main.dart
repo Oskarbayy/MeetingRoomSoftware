@@ -345,38 +345,44 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   Positioned(
                     bottom: screenHeight * 0.03,
                     right: screenWidth * 0.02,
-                    child: Tooltip(
-                      message: "Tænder den store skærm",
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          context.read<SelectedIndexNotifier>().setSelectedIndex(previousIndex);
-                          sendButtonPress(1); // Special ID for "Turn Off"
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.white,
-                          side: BorderSide(
-                            color: Colors.white,
-                            width: screenWidth * 0.002,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(screenHeight * 0.02),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: screenHeight * 0.0175,
-                            horizontal: screenWidth * 0.02,
-                          ),
-                          elevation: 0,
-                        ),
-                        icon: Icon(
-                          Icons.power_settings_new,
-                          size: screenHeight * 0.04,
-                        ),
-                        label: Text(
-                          "Tænd Skærm",
-                          style: TextStyle(
-                            fontSize: screenHeight * 0.02,
-                            fontWeight: FontWeight.bold,
+                    child: Transform.translate(
+                      offset: Offset(screenWidth * 0.01, screenHeight * 0.01), // Adjust the offset as needed
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Tooltip(
+                          message: "Tænder den store skærm",
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              context.read<SelectedIndexNotifier>().setSelectedIndex(previousIndex);
+                              sendButtonPress(1); // Special ID for "Turn On"
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: Colors.white,
+                              side: BorderSide(
+                                color: Colors.white,
+                                width: screenWidth * 0.002,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(screenHeight * 0.02),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: screenHeight * 0.025, // Increased padding
+                                horizontal: screenWidth * 0.03, // Increased padding
+                              ),
+                              elevation: 0,
+                            ),
+                            icon: Icon(
+                              Icons.power_settings_new,
+                              size: screenHeight * 0.06, // Increased icon size
+                            ),
+                            label: Text(
+                              "Tænd Skærm",
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.03, // Increased font size
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -386,44 +392,51 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   // Turn Off Screen Button at the bottom left
                   Positioned(
                     bottom: screenHeight * 0.03,
-                    right: screenWidth * 0.855,
-                    child: Tooltip(
-                      message: "Slukker den store skærm",
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          context.read<SelectedIndexNotifier>().setSelectedIndex(-1);
-                          sendButtonPress(0); // Special ID for "Turn Off"
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.white,
-                          side: BorderSide(
-                            color: Colors.white,
-                            width: screenWidth * 0.002,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(screenHeight * 0.02),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: screenHeight * 0.0175,
-                            horizontal: screenWidth * 0.02,
-                          ),
-                          elevation: 0,
-                        ),
-                        icon: Icon(
-                          Icons.power_settings_new,
-                          size: screenHeight * 0.04,
-                        ),
-                        label: Text(
-                          "Sluk Skærm",
-                          style: TextStyle(
-                            fontSize: screenHeight * 0.02,
-                            fontWeight: FontWeight.bold,
+                    left: screenWidth * 0.02,
+                    child: Transform.translate(
+                      offset: Offset(-screenWidth * 0.01, screenHeight * 0.01), // Adjust the offset as needed
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Tooltip(
+                          message: "Slukker den store skærm",
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              context.read<SelectedIndexNotifier>().setSelectedIndex(-1);
+                              sendButtonPress(0); // Special ID for "Turn Off"
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: Colors.white,
+                              side: BorderSide(
+                                color: Colors.white,
+                                width: screenWidth * 0.002,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(screenHeight * 0.02),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                vertical: screenHeight * 0.025, // Increased padding
+                                horizontal: screenWidth * 0.03, // Increased padding
+                              ),
+                              elevation: 0,
+                            ),
+                            icon: Icon(
+                              Icons.power_settings_new,
+                              size: screenHeight * 0.06, // Increased icon size
+                            ),
+                            label: Text(
+                              "Sluk Skærm",
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.03, // Increased font size
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
+
                 ],
               ),
             ],
@@ -506,7 +519,7 @@ class ToggleButtonsWidget extends StatelessWidget {
                             buttonTexts[index],
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: screenHeight * 0.03,
+                              fontSize: screenHeight * 0.0275,
                               fontWeight: FontWeight.w600,
                               color: selectedIndexNotifier.selectedIndex == index
                                   ? Colors.black87
