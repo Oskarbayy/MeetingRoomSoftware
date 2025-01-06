@@ -1042,3 +1042,63 @@ Server stderr: 2025/01/06 10:04:48 Command sent to COM11: standby off
 
 Server stderr: 2025/01/06 10:04:48 Received: standby off Command OK
 
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 14:16:02 Serial port successfully opened
+2025/01/06 14:16:02 Running startup commands...
+2025/01/06 14:16:02 Server is listening on port 8080
+
+Server stderr: 2025/01/06 14:16:07 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 14:16:07 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 14:16:07 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/06 14:16:07 Received: sw i03 Command OK
+
+Server stderr: 2025/01/06 14:16:08 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 14:16:08 Received: standby off Command OK
+
+Server stderr: 2025/01/06 14:16:09 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/06 14:16:09 Received: sw i03 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 14:16:37 Serial port successfully opened
+2025/01/06 14:16:37 Running startup commands...
+2025/01/06 14:16:37 Server is listening on port 8080
+
+Server stderr: 2025/01/06 14:16:38 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 14:16:38 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 14:16:39 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 14:16:39 Received: standby off Command OK
+
+Server stderr: 2025/01/06 14:16:39 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/06 14:16:39 Received: sw i03 Command OK
+
+Server stderr: 2025/01/06 14:16:40 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 14:16:40 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 14:16:41 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 14:16:41 Received: standby off Command OK
+
+Server stderr: 2025/01/06 14:16:42 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 14:16:42 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 14:16:43 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 14:16:43 Received: standby on Command OK
+
+Server stderr: 2025/01/06 14:16:44 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 14:16:44 Received: standby off Command OK
+

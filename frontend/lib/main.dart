@@ -391,7 +391,6 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                       message: "Slukker den store skærm",
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          previousIndex = context.read<SelectedIndexNotifier>().readSelectedIndex();
                           context.read<SelectedIndexNotifier>().setSelectedIndex(-1);
                           sendButtonPress(0); // Special ID for "Turn Off"
                         },
@@ -462,6 +461,7 @@ class ToggleButtonsWidget extends StatelessWidget {
                   return ElevatedButton(
                     onPressed: () {
                       selectedIndexNotifier.setSelectedIndex(index);
+                      previousIndex = context.read<SelectedIndexNotifier>().readSelectedIndex();
                       sendButtonPress(index + 2); // Button IDs start from 2 since turn off and on is on id 0 and 1
                     },
                     style: ElevatedButton.styleFrom(
