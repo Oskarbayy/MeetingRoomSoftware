@@ -70,11 +70,12 @@ flutter run
 ### Switch Input
 - URL: POST /api/button/{id}
 - IDs:
-  - 1: Laptop PC Wireless
-  - 2: Meeting Room PC
-  - 3: Other AV Devices
-  - 4: Laptop PC Cable
   - 0: Turn Off Output
+  - 1: Turn On Output
+  - 2: Laptop PC Wireless
+  - 3: Meeting Room PC
+  - 4: Other AV Devices
+  - 5: Laptop PC Cable
 
 ## About
 This project is tailored for Vestergaard Company meeting rooms to simplify HDMI management and enhance the presentation experience.
