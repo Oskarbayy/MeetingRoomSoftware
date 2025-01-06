@@ -4,17 +4,38 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter/services.dart'; // For keyboard events
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
   await windowManager.ensureInitialized(); // Initialize window_manager
   loadConfig();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => SelectedIndexNotifier(),
+      child: MyApp(),
+    ),
+  );
 
   // Add key event handler to handle Enter and Escape keys
   ServicesBinding.instance.keyboard.addHandler(_onKey);
 }
 
+int previousIndex = 0; // when turning on the screen automatically select last known selected input. 
+class SelectedIndexNotifier extends ChangeNotifier {
+  int _selectedIndex = -1;
+
+  int get selectedIndex => _selectedIndex;
+
+  int readSelectedIndex() {
+    return _selectedIndex;
+  }
+
+  void setSelectedIndex(int index) {
+    _selectedIndex = index;
+    notifyListeners();
+  }
+}
 Process? serverProcess;
 
 // Key event handler to toggle full-screen
@@ -319,14 +340,59 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                       ),
                     ),
                   ),
-                  // Turn Off Screen Button at the bottom right
+                  
+                  // Turn On Screen Button at the bottom right
                   Positioned(
                     bottom: screenHeight * 0.03,
                     right: screenWidth * 0.02,
                     child: Tooltip(
+                      message: "Tænder den store skærm",
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          context.read<SelectedIndexNotifier>().setSelectedIndex(previousIndex);
+                          sendButtonPress(1); // Special ID for "Turn Off"
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          foregroundColor: Colors.white,
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: screenWidth * 0.002,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(screenHeight * 0.02),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: screenHeight * 0.0175,
+                            horizontal: screenWidth * 0.02,
+                          ),
+                          elevation: 0,
+                        ),
+                        icon: Icon(
+                          Icons.power_settings_new,
+                          size: screenHeight * 0.04,
+                        ),
+                        label: Text(
+                          "Tænd Skærm",
+                          style: TextStyle(
+                            fontSize: screenHeight * 0.02,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Turn Off Screen Button at the bottom left
+                  Positioned(
+                    bottom: screenHeight * 0.03,
+                    right: screenWidth * 0.855,
+                    child: Tooltip(
                       message: "Slukker den store skærm",
                       child: ElevatedButton.icon(
                         onPressed: () {
+                          previousIndex = context.read<SelectedIndexNotifier>().readSelectedIndex();
+                          context.read<SelectedIndexNotifier>().setSelectedIndex(-1);
                           sendButtonPress(0); // Special ID for "Turn Off"
                         },
                         style: ElevatedButton.styleFrom(
@@ -369,7 +435,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   }
 }
 
-class ToggleButtonsWidget extends StatefulWidget {
+class ToggleButtonsWidget extends StatelessWidget {
   final List<String> imagePaths;
   final List<String> buttonTexts;
 
@@ -380,83 +446,78 @@ class ToggleButtonsWidget extends StatefulWidget {
   });
 
   @override
-  _ToggleButtonsWidgetState createState() => _ToggleButtonsWidgetState();
-}
-
-class _ToggleButtonsWidgetState extends State<ToggleButtonsWidget> {
-  int selectedIndex = -1;
-
-  @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(widget.imagePaths.length, (index) {
+      children: List.generate(imagePaths.length, (index) {
         return Expanded(
           child: Padding(
             padding: EdgeInsets.all(screenHeight * 0.02),
             child: AspectRatio(
               aspectRatio: 1,
-              child: ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    selectedIndex = index;
-                  });
-                  sendButtonPress(index + 1); // Button IDs start from 1
+              child: Consumer<SelectedIndexNotifier>(
+                builder: (context, selectedIndexNotifier, child) {
+                  return ElevatedButton(
+                    onPressed: () {
+                      selectedIndexNotifier.setSelectedIndex(index);
+                      sendButtonPress(index + 2); // Button IDs start from 2 since turn off and on is on id 0 and 1
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: selectedIndexNotifier.selectedIndex == index
+                          ? const Color(0xFFFDC830)
+                          : Colors.white,
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      elevation: 4,
+                      shadowColor: Colors.black54,
+                      side: BorderSide(
+                        color: selectedIndexNotifier.selectedIndex == index
+                            ? const Color(0xFFE4A411)
+                            : Colors.black12,
+                        width: 2,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          flex: 2,
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.easeInOut,
+                            padding: const EdgeInsets.all(8),
+                            child: Image.asset(
+                              imagePaths[index],
+                              fit: BoxFit.contain,
+                              color: selectedIndexNotifier.selectedIndex == index
+                                  ? Colors.white
+                                  : Colors.black87,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Flexible(
+                          flex: 1,
+                          child: Text(
+                            buttonTexts[index],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: screenHeight * 0.03,
+                              fontWeight: FontWeight.w600,
+                              color: selectedIndexNotifier.selectedIndex == index
+                                  ? Colors.black87
+                                  : Colors.black54,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: selectedIndex == index
-                      ? const Color(0xFFFDC830)
-                      : Colors.white,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  elevation: 4,
-                  shadowColor: Colors.black54,
-                  side: BorderSide(
-                    color: selectedIndex == index
-                        ? const Color(0xFFE4A411)
-                        : Colors.black12,
-                    width: 2,
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        padding: const EdgeInsets.all(8),
-                        child: Image.asset(
-                          widget.imagePaths[index],
-                          fit: BoxFit.contain,
-                          color: selectedIndex == index
-                              ? Colors.white
-                              : Colors.black87,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Flexible(
-                      flex: 1,
-                      child: Text(
-                        widget.buttonTexts[index],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: screenHeight * 0.03,
-                          fontWeight: FontWeight.w600,
-                          color: selectedIndex == index
-                              ? Colors.black87
-                              : Colors.black54,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ),
           ),

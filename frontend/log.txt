@@ -305,3 +305,740 @@ Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
 Go server started.
 Server stderr: 2024/12/22 11:33:33 Failed to initialize serial port: Serial port busy
 
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: Adgang n‘gtet.
+
+Server stderr: Adgang n‘gtet.
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:40:55 Serial port successfully opened
+2024/12/22 11:40:55 Running startup commands...
+2024/12/22 11:40:55 Server is listening on port 8080
+
+Server stderr: 2024/12/22 11:40:58 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:40:59 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:40:59 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:00 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:41:02 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:41:02 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:41:04 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:04 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:41:05 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:41:05 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:41:06 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:06 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:41:07 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:41:07 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:41:08 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:08 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:41:08 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:08 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:09 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:09 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:09 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:41:09 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:41:11 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:11 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:11 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:12 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:12 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:12 Received: <<HDMI1
+
+Server stderr: 2024/12/22 11:41:12 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:12 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:13 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:13 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:13 Command sent to COM11: >>HDMI4
+
+Server stderr: 2024/12/22 11:41:13 Received: <<HDMI4
+
+Server stderr: 2024/12/22 11:41:14 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:14 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:14 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:14 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:14 Command sent to COM11: >>HDMI1
+
+Server stderr: 2024/12/22 11:41:15 Received: <<HDMI1
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:41:22 Running startup commands...
+2024/12/22 11:41:22 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2024/12/22 11:41:43 Serial port successfully opened
+2024/12/22 11:41:43 Running startup commands...
+2024/12/22 11:41:43 Server is listening on port 8080
+
+Server stderr: 2024/12/22 11:41:46 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:46 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:46 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:46 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:46 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:47 Received: <<HDMI2
+
+Server stderr: 2024/12/22 11:41:47 Command sent to COM11: >>HDMI3
+
+Server stderr: 2024/12/22 11:41:47 Received: <<HDMI3
+
+Server stderr: 2024/12/22 11:41:47 Command sent to COM11: >>HDMI2
+
+Server stderr: 2024/12/22 11:41:47 Received: <<HDMI2
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 07:47:46 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 07:47:49 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:18:17 Serial port successfully opened
+2025/01/06 08:18:17 Running startup commands...
+2025/01/06 08:18:17 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:18:17 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:18:17 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:18:19 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:18:19 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:18:23 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:18:23 Received: standby on Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:19:15 Serial port successfully opened
+2025/01/06 08:19:15 Running startup commands...
+2025/01/06 08:19:15 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:19:16 Command sent to COM11: sw i04
+
+Server stderr: 2025/01/06 08:19:16 Received: sw i04 Command OK
+
+Server stderr: 2025/01/06 08:19:17 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:19:17 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:19:18 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:19:18 Received: standby off Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:21:38 Serial port successfully opened
+2025/01/06 08:21:38 Running startup commands...
+2025/01/06 08:21:38 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:23:01 Serial port successfully opened
+2025/01/06 08:23:01 Running startup commands...
+2025/01/06 08:23:01 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:23:49 Serial port successfully opened
+2025/01/06 08:23:49 Running startup commands...
+2025/01/06 08:23:49 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:00 Serial port successfully opened
+2025/01/06 08:24:00 Running startup commands...
+2025/01/06 08:24:00 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:03 Serial port successfully opened
+2025/01/06 08:24:03 Running startup commands...
+2025/01/06 08:24:03 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:07 Serial port successfully opened
+2025/01/06 08:24:07 Running startup commands...
+2025/01/06 08:24:07 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:11 Serial port successfully opened
+2025/01/06 08:24:11 Running startup commands...
+2025/01/06 08:24:11 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:15 Serial port successfully opened
+2025/01/06 08:24:15 Running startup commands...
+2025/01/06 08:24:15 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:18 Serial port successfully opened
+2025/01/06 08:24:18 Running startup commands...
+2025/01/06 08:24:18 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:19 Serial port successfully opened
+2025/01/06 08:24:19 Running startup commands...
+2025/01/06 08:24:19 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:22 Serial port successfully opened
+2025/01/06 08:24:22 Running startup commands...
+2025/01/06 08:24:22 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:26 Serial port successfully opened
+2025/01/06 08:24:26 Running startup commands...
+2025/01/06 08:24:26 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:24:28 Serial port successfully opened
+2025/01/06 08:24:28 Running startup commands...
+2025/01/06 08:24:28 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:25:00 Serial port successfully opened
+2025/01/06 08:25:00 Running startup commands...
+2025/01/06 08:25:00 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:25:02 Serial port successfully opened
+2025/01/06 08:25:02 Running startup commands...
+2025/01/06 08:25:02 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:26:34 Serial port successfully opened
+2025/01/06 08:26:34 Running startup commands...
+2025/01/06 08:26:34 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:27:31 Serial port successfully opened
+2025/01/06 08:27:31 Running startup commands...
+2025/01/06 08:27:31 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:33:45 Serial port successfully opened
+2025/01/06 08:33:45 Running startup commands...
+2025/01/06 08:33:45 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:34:04 Serial port successfully opened
+2025/01/06 08:34:04 Running startup commands...
+2025/01/06 08:34:04 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:34:08 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:34:08 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:34:09 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:34:09 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:34:13 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:34:13 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:34:17 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:34:17 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:34:21 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:34:22 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:34:22 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:34:22 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:34:24 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/06 08:34:24 Received: sw i03 Command OK
+
+Server stderr: 2025/01/06 08:34:25 Command sent to COM11: sw i04
+
+Server stderr: 2025/01/06 08:34:26 Received: sw i04 Command OK
+
+Server stderr: 2025/01/06 08:34:27 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:34:27 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:34:31 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:34:31 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:35:11 Serial port successfully opened
+2025/01/06 08:35:11 Running startup commands...
+2025/01/06 08:35:11 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:35:30 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:35:30 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:35:32 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:35:33 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:35:37 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:35:37 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:35:39 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:35:39 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:35:43 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:35:43 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:35:47 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:35:47 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:35:50 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:35:51 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:36:20 Running startup commands...
+
+080
+
+Server stderr: 2025/01/06 08:36:20 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:36:20 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:36:21 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:36:21 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:46:00 Serial port successfully opened
+2025/01/06 08:46:00 Running startup commands...
+2025/01/06 08:46:00 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:46:06 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:46:06 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:46:07 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:46:07 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:46:50 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:46:51 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:46:51 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:46:51 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:46:53 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:46:53 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:46:59 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:46:59 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:47:01 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/06 08:47:01 Received: sw i03 Command OK
+
+Server stderr: 2025/01/06 08:47:03 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:47:03 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:49:27 Serial port successfully opened
+2025/01/06 08:49:27 Running startup commands...
+2025/01/06 08:49:27 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:49:27 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:49:28 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:49:28 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:49:28 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:49:31 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:49:31 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:49:31 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:49:31 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:49:34 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:49:34 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:49:34 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:49:35 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:49:40 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:49:40 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:49:57 Serial port successfully opened
+2025/01/06 08:49:57 Running startup commands...
+2025/01/06 08:49:57 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:50:08 Server is listening on port 8080
+
+25/01/06 08:50:08 Running startup commands...
+
+Server stderr: 2025/01/06 08:50:09 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:50:09 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:50:12 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:50:12 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:50:13 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:50:14 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:50:49 Running startup commands...
+2025/01/06 08:50:49 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:50:50 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:50:50 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:50:51 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:50:51 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:50:54 Serial port successfully opened
+2025/01/06 08:50:54 Running startup commands...
+2025/01/06 08:50:54 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:53:01 Serial port successfully opened
+2025/01/06 08:53:01 Running startup commands...
+2025/01/06 08:53:01 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:53:15 Serial port successfully opened
+2025/01/06 08:53:15 Running startup commands...
+2025/01/06 08:53:15 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:53:18 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:53:18 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 08:53:20 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:53:20 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:53:24 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:53:24 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 08:54:40 Running startup commands...
+
+ed
+
+Server stderr: 2025/01/06 08:54:40 Server is listening on port 8080
+
+Server stderr: 2025/01/06 08:54:40 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:54:41 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:54:47 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:54:47 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:54:49 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 08:54:49 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 08:54:50 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 08:54:50 Received: standby on Command OK
+
+Server stderr: 2025/01/06 08:54:51 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 08:54:52 Received: standby off Command OK
+
+Server stderr: 2025/01/06 08:54:53 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 08:54:53 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:28:50 Serial port successfully opened
+2025/01/06 09:28:50 Running startup commands...
+2025/01/06 09:28:50 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:42:03 Running startup commands...
+2025/01/06 09:42:03 Server is listening on port 8080
+
+Server stderr: 2025/01/06 09:42:16 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 09:42:16 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 09:42:17 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:42:17 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 09:42:18 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 09:42:18 Received: standby on Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:43:21 Serial port successfully opened
+2025/01/06 09:43:21 Running startup commands...
+2025/01/06 09:43:21 Server is listening on port 8080
+
+Server stderr: 2025/01/06 09:43:21 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:43:22 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:52:14 Serial port successfully opened
+2025/01/06 09:52:14 Running startup commands...
+2025/01/06 09:52:14 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:52:47 Failed to initialize serial port: Serial port busy
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:53:14 Serial port successfully opened
+2025/01/06 09:53:14 Running startup commands...
+2025/01/06 09:53:14 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:53:19 Serial port successfully opened
+2025/01/06 09:53:19 Running startup commands...
+2025/01/06 09:53:19 Server is listening on port 8080
+
+Server stderr: 2025/01/06 09:53:19 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 09:53:19 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 09:53:22 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:53:22 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:56:11 Serial port successfully opened
+2025/01/06 09:56:11 Running startup commands...
+2025/01/06 09:56:11 Server is listening on port 8080
+
+Server stderr: 2025/01/06 09:56:19 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 09:56:19 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 09:56:20 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:56:20 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 09:56:21 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 09:56:21 Received: standby on Command OK
+
+Server stderr: 2025/01/06 09:56:28 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:56:28 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 09:56:29 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 09:56:30 Received: standby on Command OK
+
+Server stderr: 2025/01/06 09:56:30 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 09:56:30 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 09:56:32 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 09:56:32 Received: standby on Command OK
+
+Server stderr: 2025/01/06 09:56:33 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 09:56:33 Received: standby off Command OK
+
+Server stderr: 2025/01/06 09:56:37 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 09:56:37 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 09:56:40 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 09:56:41 Received: standby on Command OK
+
+Server stderr: 2025/01/06 09:56:42 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 09:56:42 Received: standby off Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 09:59:57 Serial port successfully opened
+2025/01/06 09:59:57 Running startup commands...
+2025/01/06 09:59:57 Server is listening on port 8080
+
+Server stderr: 2025/01/06 10:00:00 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 10:00:00 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 10:00:02 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 10:00:02 Received: standby on Command OK
+
+Server stderr: 2025/01/06 10:00:03 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 10:00:03 Received: standby off Command OK
+
+Server stderr: 2025/01/06 10:00:04 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 10:00:04 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 10:00:05 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 10:00:05 Received: standby on Command OK
+
+Server stderr: 2025/01/06 10:00:06 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 10:00:06 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 10:00:07 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 10:00:07 Received: standby on Command OK
+
+Server stderr: 2025/01/06 10:00:08 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 10:00:08 Received: standby off Command OK
+
+Server stderr: 2025/01/06 10:00:14 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 10:00:14 Received: standby on Command OK
+
+Server stderr: 2025/01/06 10:00:15 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 10:00:15 Received: standby off Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 10:01:26 Serial port successfully opened
+2025/01/06 10:01:26 Running startup commands...
+2025/01/06 10:01:26 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 10:04:37 Serial port successfully opened
+2025/01/06 10:04:37 Running startup commands...
+2025/01/06 10:04:37 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/06 10:04:41 Serial port successfully opened
+2025/01/06 10:04:41 Running startup commands...
+2025/01/06 10:04:41 Server is listening on port 8080
+
+Server stderr: 2025/01/06 10:04:41 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/06 10:04:42 Received: sw i02 Command OK
+
+Server stderr: 2025/01/06 10:04:42 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/06 10:04:42 Received: sw i01 Command OK
+
+Server stderr: 2025/01/06 10:04:47 Command sent to COM11: standby on
+
+Server stderr: 2025/01/06 10:04:47 Received: standby on Command OK
+
+Server stderr: 2025/01/06 10:04:48 Command sent to COM11: standby off
+
+Server stderr: 2025/01/06 10:04:48 Received: standby off Command OK
+

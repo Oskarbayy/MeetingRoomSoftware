@@ -21,10 +21,13 @@ func (h *Handlers) HandleButtonClick(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	commandKey := fmt.Sprintf("input_%d", buttonID)
+	commandKey := fmt.Sprintf("input_%d", buttonID-1) // -1 because offsets on default inputs since turn off / on is reserved for the 0 and 1 IDs
 	command := h.Port.Config.LabeledCommands[commandKey]
 	if buttonID == 0 {
 		command = h.Port.Config.LabeledCommands["turn_off"]
+	}
+	if buttonID == 1 {
+		command = h.Port.Config.LabeledCommands["turn_on"]
 	}
 	if err := h.Port.Write(command); err != nil {
 		http.Error(w, "Failed to send command", http.StatusInternalServerError)
