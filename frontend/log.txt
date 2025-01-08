@@ -1466,3 +1466,19 @@ Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
 Go server started.
 Server stderr: 2025/01/07 14:53:58 Failed to initialize serial port: Serial port not found
 
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/07 15:10:11 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/07 15:18:06 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/08 08:24:54 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/08 08:25:01 Failed to initialize serial port: Serial port not found
+
