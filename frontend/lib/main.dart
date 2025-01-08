@@ -6,9 +6,37 @@ import 'package:window_manager/window_manager.dart';
 import 'package:flutter/services.dart'; // For keyboard events
 import 'package:provider/provider.dart';
 
+// Key event handler to toggle full-screen
+bool fullscreen = false;
+bool _onKey(KeyEvent event) {
+  if (event is KeyDownEvent) {
+    if (event.logicalKey == LogicalKeyboardKey.f11) {
+      if (fullscreen == true) {
+        // Exit full-screen and restore the window to normal mode
+        windowManager.setFullScreen(false);
+        print('Exiting full-screen mode');
+        fullscreen = false;
+      }
+      else 
+      {
+        // Enter full-screen mode
+        windowManager.setFullScreen(true);
+        print('Entering full-screen mode');
+        fullscreen = true;
+      }
+    }
+  }
+  return false;
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
   await windowManager.ensureInitialized(); // Initialize window_manager
+  
+  windowManager.setFullScreen(true);
+  print('Entering automatic full-screen mode');
+  fullscreen = true;
+
   loadConfig();
   runApp(
     ChangeNotifierProvider(
@@ -37,29 +65,6 @@ class SelectedIndexNotifier extends ChangeNotifier {
   }
 }
 Process? serverProcess;
-
-// Key event handler to toggle full-screen
-bool fullscreen = false;
-bool _onKey(KeyEvent event) {
-  if (event is KeyDownEvent) {
-    if (event.logicalKey == LogicalKeyboardKey.f11) {
-      if (fullscreen == true) {
-        // Exit full-screen and restore the window to normal mode
-        windowManager.setFullScreen(false);
-        print('Exiting full-screen mode');
-        fullscreen = false;
-      }
-      else 
-      {
-        // Enter full-screen mode
-        windowManager.setFullScreen(true);
-        print('Entering full-screen mode');
-        fullscreen = true;
-      }
-    }
-  }
-  return false;
-}
 
 Future<void> startGoServer() async {
   try {
