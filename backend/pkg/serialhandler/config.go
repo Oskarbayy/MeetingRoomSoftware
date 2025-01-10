@@ -14,6 +14,8 @@ type Config struct {
 	Parity          string            `json:"parity"`
 	LabeledCommands map[string]string `json:"labeled_commands"`
 	StartupCommands []string          `json:"startup_commands"`
+	TVBroadcastIP   string            `json:"tv_broadcast_ip"`
+	TVMacAddress    string            `json:"tv_macaddress"`
 	ServerPort      int               `json:"server_port"`
 }
 

@@ -14,6 +14,11 @@ type Handlers struct {
 }
 
 func (h *Handlers) HandleButtonClick(w http.ResponseWriter, r *http.Request) {
+	// Make sure the TV is on //
+	wolMessage := sendWakeOnLan(h)
+	w.Write([]byte(fmt.Sprintf("Wake on LAN: %s\n", wolMessage)))
+
+	// Continue button handler logic
 	vars := mux.Vars(r)
 	buttonID, err := strconv.Atoi(vars["id"]) // Convert ID to integer
 	if err != nil {
@@ -29,10 +34,10 @@ func (h *Handlers) HandleButtonClick(w http.ResponseWriter, r *http.Request) {
 	if buttonID == 1 {
 		command = h.Port.Config.LabeledCommands["turn_on"]
 	}
+
 	if err := h.Port.Write(command); err != nil {
 		http.Error(w, "Failed to send command", http.StatusInternalServerError)
 		return
 	}
-	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(fmt.Sprintf("Sent command: %s", command)))
 }

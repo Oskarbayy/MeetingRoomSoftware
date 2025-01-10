@@ -49,7 +49,7 @@ Future<void> main() async {
   ServicesBinding.instance.keyboard.addHandler(_onKey);
 }
 
-int previousIndex = 0; // when turning on the screen automatically select last known selected input. 
+int previousIndex = -1; // when turning on the screen automatically select last known selected input. 
 class SelectedIndexNotifier extends ChangeNotifier {
   int _selectedIndex = -1;
 
