@@ -9,5 +9,6 @@ require (
 
 require (
 	github.com/creack/goselect v0.1.2 // indirect
+	github.com/linde12/gowol v0.0.0-20180926075039-797e4d01634c // indirect
 	golang.org/x/sys v0.28.0 // indirect
 )

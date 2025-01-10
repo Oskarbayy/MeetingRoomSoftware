@@ -13,6 +13,11 @@
         "turn_on": "standby off"
     },
     "startup_commands": [
+        "swmode default",
+        "sw on",
+        "cec auto"
     ],
+    "tv_broadcast_ip": "192.168.196.255",
+    "tv_macaddress": "00:A1:59:28:D2:B1",
     "server_port": 8080
 }

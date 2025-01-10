@@ -1482,3 +1482,525 @@ Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
 Go server started.
 Server stderr: 2025/01/08 08:25:01 Failed to initialize serial port: Serial port not found
 
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/09 15:17:16 Failed to initialize serial port: Serial port not found
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/09 15:19:29 Serial port successfully opened
+2025/01/09 15:19:29 Running startup commands...
+2025/01/09 15:19:29 Server is listening on port 8080
+
+Server stderr: 2025/01/09 15:20:05 Command sent to COM11: standby off
+
+Server stderr: 2025/01/09 15:20:05 Received: standby off Command OK
+
+Server stderr: 2025/01/09 15:20:13 Command sent to COM11: standby off
+
+Server stderr: 2025/01/09 15:20:13 Received: standby off Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/09 15:20:22 Serial port successfully opened
+2025/01/09 15:20:22 Running startup commands...
+2025/01/09 15:20:22 Server is listening on port 8080
+
+Server stderr: 2025/01/09 15:20:22 Command sent to COM11: standby off
+
+Server stderr: 2025/01/09 15:20:22 Received: standby off Command OK
+
+Server stderr: 2025/01/09 15:20:23 Command sent to COM11: standby off
+
+Server stderr: 2025/01/09 15:20:23 Received: standby off Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:34:46 Serial port successfully opened
+2025/01/10 08:34:46 Running startup commands...
+2025/01/10 08:34:46 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:34:49 Sent Wake on Lan Signal!
+2025/01/10 08:34:49 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 08:34:49 Received: sw i01 Command OK
+2025/01/10 08:34:49 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 08:34:50 Sent Wake on Lan Signal!
+2025/01/10 08:34:50 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 08:34:50 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 08:34:54 Command sent to COM11: sw i04
+
+Server stderr: 2025/01/10 08:34:54 Received: sw i04 Command OK
+
+Server stderr: 2025/01/10 08:34:54 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:35:12 Running startup commands...
+2025/01/10 08:35:12 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:35:16 Command sent to COM11: sw i04
+
+Server stderr: 2025/01/10 08:35:16 Received: sw i04 Command OK
+
+Server stderr: 2025/01/10 08:35:16 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 08:35:32 Sent Wake on Lan Signal!
+2025/01/10 08:35:32 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 08:35:32 Received: sw i02 Command OK
+2025/01/10 08:35:32 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:36:51 Serial port successfully opened
+2025/01/10 08:36:52 Running startup commands...
+2025/01/10 08:36:52 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:36:54 Sent Wake on Lan Signal!
+2025/01/10 08:36:54 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 08:36:54 Received: sw i01 Command OK
+
+Server stderr: 2025/01/10 08:36:54 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:37:16 Serial port successfully opened
+2025/01/10 08:37:16 Running startup commands...
+2025/01/10 08:37:16 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:37:16 Sent Wake on Lan Signal!
+
+i01
+
+Server stderr: 2025/01/10 08:37:16 Received: sw i01 Command OK
+2025/01/10 08:37:16 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:53:41 Serial port successfully opened
+2025/01/10 08:53:41 Running startup commands...
+2025/01/10 08:53:41 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:53:48 Error creating magic packet: invalid MAC address
+2025/01/10 08:53:48 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 08:53:48 Received: sw i01 Command OK
+
+Server stderr: 2025/01/10 08:53:48 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:53:59 Serial port successfully opened
+2025/01/10 08:53:59 Running startup commands...
+2025/01/10 08:53:59 Server is listening on port 8080
+
+Server stderr: 
+2025/01/10 08:54:00 Error creating magic packet: invalid MAC address
+2025/01/10 08:54:00 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 08:54:00 Received: sw i02 Command OK
+2025/01/10 08:54:00 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 
+2025/01/10 08:54:01 Error creating magic packet: invalid MAC address
+
+Server stderr: 2025/01/10 08:54:01 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/10 08:54:01 Received: sw i03 Command OK
+2025/01/10 08:54:01 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:55:57 Failed to initialize serial port: Serial port busy
+
+Server stderr: 2025/01/10 08:55:58 Serial port successfully opened
+2025/01/10 08:55:58 Running startup commands...
+2025/01/10 08:55:58 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:56:06 Error creating magic packet:  invalid MAC address
+
+Server stderr: 2025/01/10 08:56:06 Received: sw i01 Command OK
+2025/01/10 08:56:06 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:57:20 Serial port successfully opened
+2025/01/10 08:57:20 Running startup commands...
+2025/01/10 08:57:20 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:57:24 Error creating magic packet: invalid MAC address
+2025/01/10 08:57:24 MACAddress: 
+2025/01/10 08:57:24 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 08:57:24 Received: sw i01 Command OK
+2025/01/10 08:57:24 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 08:59:38 Serial port successfully opened
+
+Server stderr: 2025/01/10 08:59:38 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 08:59:38 Command sent to COM11: sw on
+
+nd OK
+2025/01/10 08:59:38 Startup command executed: swmode default
+
+Server stderr: 2025/01/10 08:59:38 Received: sw on Command OK
+2025/01/10 08:59:38 Startup command executed: sw on
+2025/01/10 08:59:38 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 08:59:38 Received: cec auto Command OK
+2025/01/10 08:59:38 Startup command executed: cec auto
+2025/01/10 08:59:38 Server is listening on port 8080
+
+Server stderr: 2025/01/10 08:59:39 Sent Wake on Lan Signal!
+2025/01/10 08:59:39 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 08:59:39 Received: sw i01 Command OK
+2025/01/10 08:59:39 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 08:59:41 Sent Wake on Lan Signal!
+2025/01/10 08:59:41 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 08:59:41 Received: sw i02 Command OK
+2025/01/10 08:59:41 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:00:32 Serial port successfully opened
+2025/01/10 09:00:32 Running startup commands...
+2025/01/10 09:00:32 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:00:32 Received: swmode default Command OK
+2025/01/10 09:00:32 Startup command executed: swmode default
+
+Server stderr: 2025/01/10 09:00:33 Received: sw on Command OK
+2025/01/10 09:00:33 Startup command executed: sw on
+
+Server stderr: 2025/01/10 09:00:33 Received: cec auto Command OK
+2025/01/10 09:00:33 Startup command executed: cec auto
+2025/01/10 09:00:33 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:00:34 Sent Wake on Lan Signal!
+2025/01/10 09:00:34 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:00:34 Received: sw i01 Command OK
+2025/01/10 09:00:34 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:00:50 Serial port successfully opened
+
+Server stderr: 2025/01/10 09:00:50 Running startup commands...
+2025/01/10 09:00:50 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:00:50 Received: swmode default Command OK
+2025/01/10 09:00:50 Startup command executed: swmode default
+2025/01/10 09:00:50 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:00:51 Received: sw on Command OK
+2025/01/10 09:00:51 Startup command executed: sw on
+2025/01/10 09:00:51 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:00:51 Received: cec auto Command OK
+2025/01/10 09:00:51 Startup command executed: cec auto
+2025/01/10 09:00:51 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:00:51 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:00:51 Received: sw i02 Command OK
+2025/01/10 09:00:51 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 09:00:52 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/10 09:00:53 Received: sw i03 Command OK
+
+Server stderr: 2025/01/10 09:00:53 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 09:00:54 Sent Wake on Lan Signal!
+
+Server stderr: 2025/01/10 09:00:54 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:00:54 Received: sw i02 Command OK
+2025/01/10 09:00:54 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stderr: 2025/01/10 09:00:54 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:00:54 Received: sw i01 Command OK
+2025/01/10 09:00:54 http: superfluous response.WriteHeader call from backend/pkg/api.(*Handlers).HandleButtonClick (handlers.go:47)
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:02:17 Serial port successfully opened
+2025/01/10 09:02:17 Running startup commands...
+
+Server stderr: 2025/01/10 09:02:17 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:02:17 Received: swmode default Command OK
+2025/01/10 09:02:17 Startup command executed: swmode default
+2025/01/10 09:02:17 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:02:17 Received: sw on Command OK
+2025/01/10 09:02:17 Startup command executed: sw on
+2025/01/10 09:02:17 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:02:17 Received: cec auto Command OK
+2025/01/10 09:02:17 Startup command executed: cec auto
+2025/01/10 09:02:17 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:02:49 Serial port successfully opened
+2025/01/10 09:02:49 Running startup commands...
+2025/01/10 09:02:49 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:02:50 Received: swmode default Command OK
+2025/01/10 09:02:50 Startup command executed: swmode default
+2025/01/10 09:02:50 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:02:50 Received: sw on Command OK
+2025/01/10 09:02:50 Startup command executed: sw on
+2025/01/10 09:02:50 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:02:50 Startup command executed: cec auto
+2025/01/10 09:02:50 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:03:09 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:03:09 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:03:20 Command sent to COM11: swmode default
+
+/10 09:03:20 Running startup commands...
+
+Server stderr: 2025/01/10 09:03:20 Startup command executed: swmode default
+2025/01/10 09:03:20 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:03:21 Received: sw on Command OK
+2025/01/10 09:03:21 Startup command executed: sw on
+2025/01/10 09:03:21 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:03:21 Received: cec auto Command OK
+2025/01/10 09:03:21 Startup command executed: cec auto
+2025/01/10 09:03:21 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:03:21 Sent Wake on Lan Signal!
+2025/01/10 09:03:21 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:03:21 Received: sw i02 Command OK
+
+Server stderr: 2025/01/10 09:03:21 Command sent to COM11: sw i03
+
+Server stderr: 2025/01/10 09:03:22 Received: sw i03 Command OK
+
+Server stderr: 2025/01/10 09:03:22 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:03:22 Received: sw i02 Command OK
+
+Server stderr: 2025/01/10 09:03:23 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:03:23 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:05:59 Serial port successfully opened
+2025/01/10 09:05:59 Running startup commands...
+2025/01/10 09:05:59 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:05:59 Received: swmode default Command OK
+2025/01/10 09:05:59 Startup command executed: swmode default
+2025/01/10 09:05:59 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:05:59 Received: sw on Command OK
+2025/01/10 09:05:59 Startup command executed: sw on
+2025/01/10 09:05:59 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:05:59 Startup command executed: cec auto
+2025/01/10 09:05:59 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:06:02  00:A1:59:28:D2:B1
+2025/01/10 09:06:02 Sent Wake on Lan Signal!
+2025/01/10 09:06:02 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:06:02 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:08:39 Serial port successfully opened
+2025/01/10 09:08:39 Running startup commands...
+2025/01/10 09:08:39 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:08:39 Command sent to COM11: sw on
+
+nd OK
+2025/01/10 09:08:39 Startup command executed: swmode default
+
+Server stderr: 2025/01/10 09:08:39 Command sent to COM11: cec auto
+
+01/10 09:08:39 Startup command executed: sw on
+
+Server stderr: 2025/01/10 09:08:39 Received: cec auto Command OK
+2025/01/10 09:08:39 Startup command executed: cec auto
+2025/01/10 09:08:39 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:08:42 MAC: 00:A1:59:28:D2:B1
+2025/01/10 09:08:42 ipBroadcast: 
+2025/01/10 09:08:42 Sent Wake on Lan Signal!
+2025/01/10 09:08:42 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:08:42 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:09:36 Serial port successfully opened
+2025/01/10 09:09:36 Running startup commands...
+2025/01/10 09:09:36 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:09:36 Received: swmode default Command OK
+2025/01/10 09:09:36 Startup command executed: swmode default
+2025/01/10 09:09:36 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:09:36 Received: sw on Command OK
+2025/01/10 09:09:36 Startup command executed: sw on
+2025/01/10 09:09:36 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:09:36 Received: cec auto Command OK
+2025/01/10 09:09:36 Startup command executed: cec auto
+2025/01/10 09:09:36 Server is listening on port 8080
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:09:43 Serial port successfully opened
+
+ault
+
+Server stderr: 2025/01/10 09:09:43 Command sent to COM11: sw on
+
+nd OK
+
+lt
+
+Server stderr: 2025/01/10 09:09:43 Received: sw on Command OK
+2025/01/10 09:09:43 Startup command executed: sw on
+2025/01/10 09:09:43 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:09:43 Received: cec auto Command OK
+2025/01/10 09:09:43 Startup command executed: cec auto
+2025/01/10 09:09:43 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:09:43 MAC: 00:A1:59:28:D2:B1
+2025/01/10 09:09:43 ipBroadcast: 
+2025/01/10 09:09:43 Sent Wake on Lan Signal!
+2025/01/10 09:09:43 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:09:43 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:12:38 Failed to initialize serial port: Serial port busy
+
+Server stderr: 2025/01/10 09:12:38 Command sent to COM11: swmode default
+
+/10 09:12:38 Running startup commands...
+
+Server stderr: 2025/01/10 09:12:39 Received: swmode default Command OK
+2025/01/10 09:12:39 Startup command executed: swmode default
+2025/01/10 09:12:39 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:12:39 Startup command executed: sw on
+2025/01/10 09:12:39 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:12:39 Received: cec auto Command OK
+2025/01/10 09:12:39 Startup command executed: cec auto
+2025/01/10 09:12:39 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:12:46 MAC: 00:A1:59:28:D2:B1
+2025/01/10 09:12:46 ipBroadcast: 192.168.196.255
+2025/01/10 09:12:46 Sent Wake on Lan Signal!
+2025/01/10 09:12:46 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:12:46 Received: sw i01 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:12:59 Command sent to COM11: swmode default
+
+/10 09:12:59 Running startup commands...
+
+Server stderr: 2025/01/10 09:12:59 Received: swmode default Command OK
+2025/01/10 09:12:59 Startup command executed: swmode default
+2025/01/10 09:12:59 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:12:59 Received: sw on Command OK
+2025/01/10 09:12:59 Startup command executed: sw on
+2025/01/10 09:12:59 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:12:59 Received: cec auto Command OK
+2025/01/10 09:12:59 Startup command executed: cec auto
+2025/01/10 09:12:59 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:13:00 Sent Wake on Lan Signal!
+
+5/01/10 09:13:00 ipBroadcast: 192.168.196.255
+
+Server stderr: 2025/01/10 09:13:00 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:13:00 Received: sw i02 Command OK
+
+Server stderr: 2025/01/10 09:13:03 Sent Wake on Lan Signal!
+
+i01
+
+Server stderr: 2025/01/10 09:13:03 Received: sw i01 Command OK
+
+Server stderr: 2025/01/10 09:13:10 Sent Wake on Lan Signal!
+
+55
+
+Server stderr: 2025/01/10 09:13:10 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:13:10 Received: sw i02 Command OK
+
+Server stderr: 2025/01/10 09:13:22 MAC: 00:A1:59:28:D2:B1
+2025/01/10 09:13:22 ipBroadcast: 192.168.196.255
+2025/01/10 09:13:22 Sent Wake on Lan Signal!
+2025/01/10 09:13:22 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:13:22 Received: sw i02 Command OK
+
+Server stdout: C:\Users\osha\Desktop\MeetingRoomSoftware\frontend/server.exe
+Go server started.
+Server stderr: 2025/01/10 09:14:05 Serial port successfully opened
+2025/01/10 09:14:05 Running startup commands...
+2025/01/10 09:14:05 Command sent to COM11: swmode default
+
+Server stderr: 2025/01/10 09:14:05 Received: swmode default Command OK
+2025/01/10 09:14:05 Startup command executed: swmode default
+2025/01/10 09:14:05 Command sent to COM11: sw on
+
+Server stderr: 2025/01/10 09:14:05 Received: sw on Command OK
+2025/01/10 09:14:05 Startup command executed: sw on
+2025/01/10 09:14:05 Command sent to COM11: cec auto
+
+Server stderr: 2025/01/10 09:14:05 Received: cec auto Command OK
+2025/01/10 09:14:05 Startup command executed: cec auto
+2025/01/10 09:14:05 Server is listening on port 8080
+
+Server stderr: 2025/01/10 09:14:05 Sent Wake on Lan Signal!
+2025/01/10 09:14:05 Command sent to COM11: sw i01
+
+Server stderr: 2025/01/10 09:14:06 Received: sw i01 Command OK
+
+Server stderr: 2025/01/10 09:14:20 Sent Wake on Lan Signal!
+2025/01/10 09:14:20 Command sent to COM11: sw i02
+
+Server stderr: 2025/01/10 09:14:20 Received: sw i02 Command OK
+
