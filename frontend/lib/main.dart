@@ -5,21 +5,17 @@ import 'dart:convert';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter/services.dart'; // For keyboard events
 import 'package:provider/provider.dart';
+import 'package:path/path.dart' as p;
 
-// Key event handler to toggle full-screen
 bool fullscreen = false;
 bool _onKey(KeyEvent event) {
   if (event is KeyDownEvent) {
     if (event.logicalKey == LogicalKeyboardKey.f11) {
       if (fullscreen == true) {
-        // Exit full-screen and restore the window to normal mode
         windowManager.setFullScreen(false);
         print('Exiting full-screen mode');
         fullscreen = false;
-      }
-      else 
-      {
-        // Enter full-screen mode
+      } else {
         windowManager.setFullScreen(true);
         print('Entering full-screen mode');
         fullscreen = true;
@@ -30,14 +26,14 @@ bool _onKey(KeyEvent event) {
 }
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
-  await windowManager.ensureInitialized(); // Initialize window_manager
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
   
   windowManager.setFullScreen(true);
   print('Entering automatic full-screen mode');
   fullscreen = true;
 
-  loadConfig();
+  await loadConfig();
   runApp(
     ChangeNotifierProvider(
       create: (context) => SelectedIndexNotifier(),
@@ -45,11 +41,10 @@ Future<void> main() async {
     ),
   );
 
-  // Add key event handler to handle Enter and Escape keys
   ServicesBinding.instance.keyboard.addHandler(_onKey);
 }
 
-int previousIndex = -1; // when turning on the screen automatically select last known selected input. 
+int previousIndex = -1;
 class SelectedIndexNotifier extends ChangeNotifier {
   int _selectedIndex = -1;
 
@@ -64,50 +59,49 @@ class SelectedIndexNotifier extends ChangeNotifier {
     notifyListeners();
   }
 }
+
 Process? serverProcess;
+bool isServerStarting = false;
+bool isServerStopping = false;
 
 Future<void> startGoServer() async {
+  if (isServerStarting || serverProcess != null) return;
+  isServerStarting = true;
+
   try {
-    // Define currentDir in the scope of the method
-    final currentDir = Directory.current.path;
+    // Get the path to the running .exe, then derive the .exe directory
+    final exePath = Platform.resolvedExecutable;
+    final exeDir = p.dirname(exePath);
 
-    // Hardcoded paths for release mode
-    final serverPath = '$currentDir/server.exe';
-
-    // Log file path
-    final logFilePath = '$currentDir/log.txt';
+    final serverPath = p.join(exeDir, 'server.exe');
+    final logFilePath = p.join(exeDir, 'log.txt');
     final logFile = File(logFilePath);
 
-    // Ensure the log file exists, create if not
     if (!await logFile.exists()) {
       await logFile.create();
     }
 
-    // Debugging: Write the config path to the log
-    await logFile.writeAsString('Server stdout: $serverPath\n', mode: FileMode.append);
+    await logFile.writeAsString('Server path: $serverPath\n', mode: FileMode.append);
 
-    // Check if the server file exists
     if (!File(serverPath).existsSync()) {
-      print('Error: $serverPath does not exist.');
-      await logFile.writeAsString('Error: $serverPath does not exist.\n', mode: FileMode.append);
+      final errorMsg = 'Error: $serverPath does not exist.';
+      print(errorMsg);
+      await logFile.writeAsString('$errorMsg\n', mode: FileMode.append);
       return;
     }
 
-    // Launch the server
     serverProcess = await Process.start(
       serverPath,
       [],
-      workingDirectory: currentDir,  // Ensure the correct working directory
+      workingDirectory: exeDir, // ensure it runs in the same dir as server.exe
       runInShell: true,
     );
 
-    // Handle stdout (standard output) and write to log
     serverProcess?.stdout.transform(SystemEncoding().decoder).listen((data) async {
       print('Server stdout: $data');
       await logFile.writeAsString('Server stdout: $data\n', mode: FileMode.append);
     });
 
-    // Handle stderr (standard error) and write to log
     serverProcess?.stderr.transform(SystemEncoding().decoder).listen((data) async {
       print('Server stderr: $data');
       await logFile.writeAsString('Server stderr: $data\n', mode: FileMode.append);
@@ -115,35 +109,40 @@ Future<void> startGoServer() async {
 
     print('Go server started.');
     await logFile.writeAsString('Go server started.\n', mode: FileMode.append);
-
   } catch (e) {
     print('Error starting Go server: $e');
-    final currentDir = Directory.current.path;  // Ensure this is defined if an error occurs
-    final logFilePath = '$currentDir/log.txt';
+
+    final exePath = Platform.resolvedExecutable;
+    final exeDir = p.dirname(exePath);
+    final logFilePath = p.join(exeDir, 'log.txt');
     final logFile = File(logFilePath);
+
     await logFile.writeAsString('Error starting Go server: $e\n', mode: FileMode.append);
+  } finally {
+    isServerStarting = false;
   }
 }
 
+Future<void> stopGoServer() async {
+  if (isServerStopping || serverProcess == null) return;
+  isServerStopping = true;
 
-void stopGoServer() async {
   try {
-    if (serverProcess != null) {
-      print("Stopping Go server...");
-      // Kill the server process
-      await Process.run('taskkill', ['/F', '/IM', 'server.exe']);
-      print('All server.exe processes terminated.');
+    print("Stopping Go server...");
+    // Using taskkill by process name does not need an absolute path
+    await Process.run('taskkill', ['/F', '/IM', 'server.exe']);
+    print('All server.exe processes terminated.');
 
-      await serverProcess?.exitCode;
-      print('Exit code: ${await serverProcess?.exitCode}');
+    // Wait for the current serverProcess to fully exit
+    await serverProcess?.exitCode;
+    print('Exit code: ${await serverProcess?.exitCode}');
 
-
-      print('Go server stopped.');
-    } else {
-      print('No server process found.');
-    }
+    serverProcess = null;
+    print('Go server stopped.');
   } catch (e) {
     print('Error stopping Go server: $e');
+  } finally {
+    isServerStopping = false;
   }
 }
 
@@ -151,8 +150,12 @@ Map<String, dynamic>? appConfig;
 
 Future<void> loadConfig() async {
   try {
-    final currentDir = Directory.current.path;
-    final configFilePath = '$currentDir\\config.json';
+    // Get the path of the running .exe, then derive the directory
+    final exePath = Platform.resolvedExecutable;
+    final exeDir = p.dirname(exePath);
+
+    // Create absolute path for config.json
+    final configFilePath = p.join(exeDir, 'config.json');
 
     if (!File(configFilePath).existsSync()) {
       print('Config file not found at $configFilePath');
@@ -188,6 +191,7 @@ Future<void> sendButtonPress(int buttonID) async {
   }
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -211,17 +215,15 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this); // Listen to lifecycle events
-    startGoServer(); // Start the server when the widget initializes
+    WidgetsBinding.instance.addObserver(this);
+    startGoServer();
   }
 
   @override
   void dispose() {
     super.dispose();
-    // Stop the Go server when the app is closed or detached
     stopGoServer();
   }
-
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -231,12 +233,13 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       stopGoServer();
     } else if (state == AppLifecycleState.resumed) {
       loadConfig();
-      startGoServer(); // Start the server when the widget initializes
+      startGoServer();
       print('App is resumed - server started.');
     } else if (state == AppLifecycleState.paused) {
       print('App is paused.');
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
