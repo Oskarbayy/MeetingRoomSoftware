@@ -41,3 +41,7 @@ func (h *Handlers) HandleButtonClick(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write([]byte(fmt.Sprintf("Sent command: %s", command)))
 }
+
+func (h *Handlers) CheckMeetingStatus(w http.ResponseWriter, r *http.Request) {
+
+}

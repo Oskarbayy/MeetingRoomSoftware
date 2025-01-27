@@ -1,3 +1,5 @@
+// Warning code is not modular !!!xd
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -6,6 +8,11 @@ import 'package:window_manager/window_manager.dart';
 import 'package:flutter/services.dart'; // For keyboard events
 import 'package:provider/provider.dart';
 import 'package:path/path.dart' as p;
+import 'widget/turn_off_screen_button.dart';
+import 'widget/turn_on_screen_button.dart';
+import 'widget/toggle_button_widget.dart';
+import 'widget/timer.dart';
+
 
 bool fullscreen = false;
 bool _onKey(KeyEvent event) {
@@ -279,6 +286,23 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
               // Stack Content
               Stack(
                 children: [
+                  // Timer (Time until or left of meeting)
+                  Positioned(
+                    top: 30,
+                    left: 30,
+                    child: SizedBox( // Provide explicit size constraints
+                      width: screenHeight * 0.2, // Set the width
+                      height: screenHeight * 0.2, // Set the height
+                      child: AspectRatio(
+                        aspectRatio: 1, // Ensure it's square
+                        child: Container(
+                          color: Color.fromRGBO(255, 255, 255, 0),
+                          child: Timer(), // Timer widget inside the container
+                        ),
+                      ),
+                    ),
+                  ),
+
                   // Image at the top (scaled)
                   Positioned(
                     top: screenHeight * 0.05,
@@ -350,99 +374,21 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   ),
                   
                   // Turn On Screen Button at the bottom right
-                  Positioned(
-                    bottom: screenHeight * 0.03,
-                    right: screenWidth * 0.02,
-                    child: Transform.translate(
-                      offset: Offset(screenWidth * 0.01, screenHeight * 0.01), // Adjust the offset as needed
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Tooltip(
-                          message: "Tænder den store skærm",
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              context.read<SelectedIndexNotifier>().setSelectedIndex(previousIndex);
-                              sendButtonPress(1); // Special ID for "Turn On"
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              foregroundColor: Colors.white,
-                              side: BorderSide(
-                                color: Colors.white,
-                                width: screenWidth * 0.002,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(screenHeight * 0.02),
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                vertical: screenHeight * 0.025, // Increased padding
-                                horizontal: screenWidth * 0.03, // Increased padding
-                              ),
-                              elevation: 0,
-                            ),
-                            icon: Icon(
-                              Icons.power_settings_new,
-                              size: screenHeight * 0.06, // Increased icon size
-                            ),
-                            label: Text(
-                              "Tænd Skærm",
-                              style: TextStyle(
-                                fontSize: screenHeight * 0.03, // Increased font size
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  TurnOnScreenButton(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                    sendButtonPress: (int id) {
+                      sendButtonPress(id); // Special ID for "Turn On"
+                    },
                   ),
 
                   // Turn Off Screen Button at the bottom left
-                  Positioned(
-                    bottom: screenHeight * 0.03,
-                    left: screenWidth * 0.02,
-                    child: Transform.translate(
-                      offset: Offset(-screenWidth * 0.01, screenHeight * 0.01), // Adjust the offset as needed
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: Tooltip(
-                          message: "Slukker den store skærm",
-                          child: ElevatedButton.icon(
-                            onPressed: () {
-                              context.read<SelectedIndexNotifier>().setSelectedIndex(-1);
-                              sendButtonPress(0); // Special ID for "Turn Off"
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              foregroundColor: Colors.white,
-                              side: BorderSide(
-                                color: Colors.white,
-                                width: screenWidth * 0.002,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(screenHeight * 0.02),
-                              ),
-                              padding: EdgeInsets.symmetric(
-                                vertical: screenHeight * 0.025, // Increased padding
-                                horizontal: screenWidth * 0.03, // Increased padding
-                              ),
-                              elevation: 0,
-                            ),
-                            icon: Icon(
-                              Icons.power_settings_new,
-                              size: screenHeight * 0.06, // Increased icon size
-                            ),
-                            label: Text(
-                              "Sluk Skærm",
-                              style: TextStyle(
-                                fontSize: screenHeight * 0.03, // Increased font size
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                  TurnOffScreenButton(
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                    sendButtonPress: (int id) {
+                      sendButtonPress(id); // Special ID for "Turn On"
+                    },
                   ),
 
                 ],
@@ -452,111 +398,5 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
         },
       ),
     );
-  }
-}
-
-class ToggleButtonsWidget extends StatelessWidget {
-  final List<String> imagePaths;
-  final List<String> buttonTexts;
-
-  const ToggleButtonsWidget({
-    super.key,
-    required this.imagePaths,
-    required this.buttonTexts,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    return Row(
-  mainAxisAlignment: MainAxisAlignment.center,
-  children: List.generate(imagePaths.length, (index) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.all(screenHeight * 0.02),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Consumer<SelectedIndexNotifier>(
-            builder: (context, selectedIndexNotifier, child) {
-              return ElevatedButton(
-                onPressed: () {
-                  selectedIndexNotifier.setSelectedIndex(index);
-                  previousIndex = context.read<SelectedIndexNotifier>().readSelectedIndex();
-                  sendButtonPress(index + 2); // Button IDs start from 2 since turn off and on is on id 0 and 1
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: selectedIndexNotifier.selectedIndex == index
-                      ? const Color(0xFFFDC830)
-                      : Colors.white,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  elevation: 4,
-                  shadowColor: Colors.black54,
-                  side: BorderSide(
-                    color: selectedIndexNotifier.selectedIndex == index
-                        ? const Color(0xFFE4A411)
-                        : Colors.black12,
-                    width: 2,
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      flex: 2,
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
-                        curve: Curves.easeInOut,
-                        padding: const EdgeInsets.all(8),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color.fromRGBO(0, 0, 0, 0.2),
-                                blurRadius: 50,
-                                spreadRadius: -15,
-                                offset: Offset(0, 0),
-                              ),
-                            ],
-                          ),
-                          child: Image.asset(
-                            imagePaths[index],
-                            fit: BoxFit.contain,
-                            color: selectedIndexNotifier.selectedIndex == index
-                                ? Colors.white
-                                : Colors.black87,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Flexible(
-                      flex: 1,
-                      child: Text(
-                        buttonTexts[index],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: screenHeight * 0.0275,
-                          fontWeight: FontWeight.w600,
-                          color: selectedIndexNotifier.selectedIndex == index
-                              ? Colors.black87
-                              : Colors.black54,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }),
-);
   }
 }

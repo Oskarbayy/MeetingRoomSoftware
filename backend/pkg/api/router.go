@@ -9,4 +9,5 @@ import (
 func SetupRoutes(router *mux.Router, port *serialhandler.Port) {
 	handlers := &Handlers{Port: port}
 	router.HandleFunc("/api/button/{id}", handlers.HandleButtonClick).Methods("POST")
+	router.HandleFunc("/api/checkMeetingStatus", handlers.CheckMeetingStatus).Methods("GET")
 }
