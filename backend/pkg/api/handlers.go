@@ -212,6 +212,7 @@ func (h *Handlers) GetCurrentMeetingStatusFromEnv(w http.ResponseWriter, r *http
 		"mr-sws@vestergaardcompany.com",
 		"mr-beta@vestergaardcompany.com",
 		"mr-beta15@vestergaardcompany.com",
+		"osha@vestergaardcompany.com",
 	}
 
 	// Prepare a slice to hold availability data for all rooms
