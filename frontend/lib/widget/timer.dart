@@ -20,11 +20,23 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   String toTime = "";
   bool isAvailable = true; // Default state
   String statusText = ""; // Text above the timer
+  DateTime? fromTimeUtc; // Store meeting start time from server
+  DateTime? toTimeUtc; // Store meeting end time from server
 
   String get countText {
-    Duration count = duration * controller.value;
-    return '${(count.inHours % 24).toString().padLeft(2, '0')}:${(count.inMinutes % 60).toString().padLeft(2, '0')}:${(count.inSeconds % 60).toString().padLeft(2, '0')}';
+    final Duration count = duration * controller.value;
+    final int hours = count.inHours % 24;
+    final int minutes = count.inMinutes % 60;
+
+    if (hours == 0) {
+      // Show only minutes (e.g. "20")
+      return '$minutes';
+    } else {
+      // Show hours and minutes (e.g. "01:20")
+      return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}';
+    }
   }
+
 
   @override
   void initState() {
@@ -34,13 +46,26 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
     controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 1),
-    )..value = 1.0; // Prevents errors if fetchMeetingStatus() fails
+    )..value = 1.0;
 
-    fetchMeetingStatus();
+    // Add a listener to update `progress` every frame based on animation
+    controller.addListener(() {
+      if (mounted && fromTimeUtc != null && toTimeUtc != null) {
+        DateTime now = DateTime.now().toUtc().add(const Duration(hours: 1));
+        Duration totalTime = toTimeUtc!.difference(fromTimeUtc!);
+        Duration elapsedTime = now.difference(fromTimeUtc!);
 
-    // Start a periodic timer to refresh the meeting status
+        setState(() {
+          progress = totalTime.inSeconds > 0 ? elapsedTime.inSeconds / totalTime.inSeconds : 0.0;
+        });
+      }
+    });
+
+    fetchMeetingStatus(); // Fetch initial status
+
+    // Start a periodic timer to refresh the meeting status every 10 seconds
     refreshTimer = Timer.periodic(const Duration(seconds: 10), (Timer t) {
-      fetchMeetingStatus(); // Fetch updated data every 10 seconds
+      fetchMeetingStatus();
     });
   }
 
@@ -55,21 +80,28 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
 
         if (data['roomAvailability'] != null) {
           isAvailable = data['roomAvailability']['isAvailable'];
-          String fromTime = data['roomAvailability']['FromTime'] ?? "";
-          toTime = data['roomAvailability']['ToTime'] ?? "";
+          String fromTimeStr = data['roomAvailability']['FromTime'] ?? "";
+          String toTimeStr = data['roomAvailability']['ToTime'] ?? "";
 
           print("[LOG] isAvailable: $isAvailable");
-          print("[LOG] FromTime: $fromTime");
-          print("[LOG] ToTime: $toTime");
+          print("[LOG] FromTime: $fromTimeStr");
+          print("[LOG] ToTime: $toTimeStr");
 
-          if (fromTime.isNotEmpty && toTime.isNotEmpty) {
-            DateTime fromTimeUtc = DateTime.parse(fromTime); // IS ALREADY UTC+1
-            DateTime toTimeUtc = DateTime.parse(toTime); // IS ALREADY UTC+1
+          if (fromTimeStr.isNotEmpty && toTimeStr.isNotEmpty) {
+            DateTime newFromTime = DateTime.parse(fromTimeStr); // IS ALREADY UTC+1
+            DateTime newToTime = DateTime.parse(toTimeStr); // IS ALREADY UTC+1
+
+            // Only update fromTimeUtc if it has changed
+            if (fromTimeUtc == null || fromTimeUtc != newFromTime) {
+              fromTimeUtc = newFromTime;
+            }
+
+            toTimeUtc = newToTime; // Always update end time
             DateTime now = DateTime.now().toUtc().add(const Duration(hours: 1)); // Convert current time to UTC+1
             
-            Duration totalTime = toTimeUtc.difference(fromTimeUtc); // Full meeting duration
-            Duration elapsedTime = now.difference(fromTimeUtc); // Time since meeting started
-            Duration remainingTime = toTimeUtc.difference(now); // Time left until meeting ends
+            Duration totalTime = toTimeUtc!.difference(fromTimeUtc!); // Full meeting duration
+            Duration elapsedTime = now.difference(fromTimeUtc!); // Time since meeting started
+            Duration remainingTime = toTimeUtc!.difference(now); // Time left until meeting ends
 
             // Ensure values are within valid range
             if (elapsedTime.isNegative) elapsedTime = Duration.zero;
@@ -90,9 +122,12 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
             setState(() {
               duration = remainingTime;
               isLoading = false;
-              progress = totalTime.inSeconds > 0 ? elapsedTime.inSeconds / totalTime.inSeconds : 0.0;
-              statusText = now.isBefore(fromTimeUtc) ? "Meeting starts in" : "Meeting ends in";
+              statusText = now.isBefore(fromTimeUtc!) ? "Meeting starts in" : "Meeting ends in";
+              toTime = toTimeUtc.toString(); // Ensure `toTime` is updated for UI logic
+
+              print(toTime);
             });
+
 
             print("[LOG] Updated Progress Value: $progress");
 
@@ -134,7 +169,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   @override
   void dispose() {
     controller.dispose();
-    refreshTimer.cancel(); // Stop the timer when widget is disposed
+    refreshTimer.cancel();
     super.dispose();
   }
 
@@ -151,7 +186,6 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
           : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 10),
                 Expanded(
                   child: Center(
                     child: Stack(
@@ -161,7 +195,7 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
                           height: circleDiameter,
                           width: circleDiameter,
                           decoration: BoxDecoration(
-                            color: Colors.black.withOpacity(0.2),
+                            color: const Color.fromARGB(255, 255, 255, 255),
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -170,54 +204,76 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
                           width: circleDiameter,
                           child: CircularProgressIndicator(
                             strokeWidth: 8.0,
-                            value: toTime.isEmpty ? 1.0 : (1-progress),
+                            value: (fromTimeUtc == null) ? 1.0 : (1-progress),
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color.fromARGB(255, 238, 189, 49),
+                              Color.fromARGB(255, 22, 201, 49),
                             ),
-                            backgroundColor: Colors.grey.shade300,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
                           ),
                         ),
                         AnimatedBuilder(
                           animation: controller,
-                          builder: (context, child) => Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: textContainerWidth, // Restrict width
-                                child: Text(
-                                  toTime.isEmpty ? "No meetings scheduled" : statusText,
-                                  textAlign: TextAlign.center, // Center text
-                                  softWrap: true, // Allow text wrapping
-                                  overflow: TextOverflow.visible, // Prevent text clipping
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: toTime.isEmpty ? screenHeight * 0.014 : screenHeight * 0.0175, // Adjust size if no meeting
-                                    fontWeight: FontWeight.bold,
+                          builder: (context, child) {
+                            final bool noMeeting = (fromTimeUtc == null);
+                            final String mainText = noMeeting 
+                                ? DateFormat('HH:mm').format(DateTime.now()) 
+                                : countText;
+                            final String status = noMeeting 
+                                ? 'No meetings scheduled' 
+                                : statusText;
+                            
+                            return Stack(
+                              alignment: Alignment.center, // Base alignment for all children
+                              children: [
+                                // The big text in the *exact* center
+                                Align(
+                                  alignment: Alignment.center, 
+                                  child: Text(
+                                    mainText,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: screenHeight * 0.06,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                toTime.isEmpty ? DateFormat('HH:mm').format(DateTime.now()) : countText,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: screenHeight * 0.04,
-                                  fontWeight: FontWeight.bold,
+
+                                // Text above the count text (slightly above center)
+                                Align(
+                                  alignment: const Alignment(0, -0.5), 
+                                  // adjust the second parameter to move it closer/farther from center
+                                  child: Text(
+                                    status,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: noMeeting 
+                                          ? screenHeight * 0.014 
+                                          : screenHeight * 0.0175,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              Text(
-                                DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 233, 233, 233),
-                                  fontSize: screenHeight * 0.0125,
-                                  fontWeight: FontWeight.bold,
+
+                                // Text below the count text (slightly below center)
+                                Align(
+                                  alignment: const Alignment(0, 0.55), 
+                                  // adjust the second parameter to move it closer/farther from center
+                                  child: Text(
+                                    DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
+                                    style: TextStyle(
+                                      color: const Color.fromARGB(255, 155, 155, 155),
+                                      fontSize: screenHeight * 0.0125,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
+                              ],
+                            );
+                          },
                         ),
+
+
                       ],
                     ),
                   ),

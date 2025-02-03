@@ -64,7 +64,7 @@ func (h *Handlers) GetCurrentMeetingStatusFromEnv(w http.ResponseWriter, r *http
 	endTime := time.Date(now.Year(), now.Month(), now.Day(), 23, 0, 0, 0, now.Location())  // 11:00 PM today
 
 	// List of meeting room email addresses
-	roomEmail := "mr-minimylite@vestergaardcompany.com"
+	roomEmail := "mr-gamma@vestergaardcompany.com"
 
 	// Initialize the response struct
 	var roomResponse RoomAvailabilityResponse
@@ -93,7 +93,7 @@ func (h *Handlers) GetCurrentMeetingStatusFromEnv(w http.ResponseWriter, r *http
 }
 
 func getCurrentMeetingStatus(accessToken string) (*EventsResponse, error) {
-	mail := "mr-e-chassis12t@vestergaardcompany.com"
+	mail := "mr-gamma@vestergaardcompany.com"
 	url := fmt.Sprintf("https://graph.microsoft.com/v1.0/users/%s/events", mail)
 
 	// Create the HTTP GET request

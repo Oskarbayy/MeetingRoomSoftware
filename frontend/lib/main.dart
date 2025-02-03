@@ -299,7 +299,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   // Timer (Time until or left of meeting)
                   Positioned(
                     top: 30,
-                    left: 30,
+                    right: 30,
                     child: SizedBox(
                       width: screenHeight * 0.2, // Set the width
                       height: screenHeight * 0.2, // Set the height
