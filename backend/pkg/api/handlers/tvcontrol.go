@@ -1,10 +1,15 @@
-package api
+package handlers
 
 import (
+	"backend/pkg/serialhandler"
 	"log"
 
 	"github.com/linde12/gowol"
 )
+
+type Handlers struct {
+	Port *serialhandler.Port
+}
 
 func sendWakeOnLan(h *Handlers) string {
 	ipBroadcast := h.Port.Config.TVBroadcastIP

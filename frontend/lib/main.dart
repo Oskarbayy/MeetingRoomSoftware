@@ -250,6 +250,16 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    // Get meeting room email from config
+    String meetingRoomEmail = appConfig?['meeting_room_email'] ?? "No email configured";
+    // Extract only the part before "@"
+    if (meetingRoomEmail.contains("@")) {
+      meetingRoomEmail = meetingRoomEmail.split("@")[0];
+    }
+
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -290,14 +300,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   Positioned(
                     top: 30,
                     left: 30,
-                    child: SizedBox( // Provide explicit size constraints
+                    child: SizedBox(
                       width: screenHeight * 0.2, // Set the width
                       height: screenHeight * 0.2, // Set the height
                       child: AspectRatio(
                         aspectRatio: 1, // Ensure it's square
                         child: Container(
                           color: Color.fromRGBO(255, 255, 255, 0),
-                          child: Timer(), // Timer widget inside the container
+                          child: TimerScreen(), // Timer widget inside the container
                         ),
                       ),
                     ),
@@ -311,30 +321,23 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                     child: Center(
                       child: Image.asset(
                         'assets/images/vesterlogowhite.png',
-                        height: screenHeight * 0.1,
+                        height: screenHeight * 0.125,
                         fit: BoxFit.contain,
                       ),
                     ),
                   ),
+
                   // Centered buttons
                   Center(
                     child: Container(
                       width: screenWidth * 0.8,
-                      height: screenHeight * 0.5, // Increased height for the title
+                      height: screenHeight * 0.45, // Increased height for the title
                       padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.02, // Padding inside container
+                        vertical: screenHeight * 0.01, // Padding inside container
                       ),
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(150, 0, 0, 0),
                         borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -350,7 +353,6 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(height: screenHeight * 0.02),
                           // Toggle Buttons
                           const Expanded(
                             child: ToggleButtonsWidget(
@@ -372,7 +374,7 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                       ),
                     ),
                   ),
-                  
+
                   // Turn On Screen Button at the bottom right
                   TurnOnScreenButton(
                     screenWidth: screenWidth,
@@ -387,10 +389,27 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                     sendButtonPress: (int id) {
-                      sendButtonPress(id); // Special ID for "Turn On"
+                      sendButtonPress(id); // Special ID for "Turn Off"
                     },
                   ),
 
+                  // Meeting Room Email at the bottom center
+                  Positioned(
+                    bottom: screenHeight * 0.02, // Slightly above the bottom edge
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Text(
+                        meetingRoomEmail,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: screenHeight * 0.0225, // Scaled text size
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white.withOpacity(0.25), // Semi-transparent text
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
