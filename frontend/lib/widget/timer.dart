@@ -11,7 +11,8 @@ class TimerScreen extends StatefulWidget {
   _TimerScreenState createState() => _TimerScreenState();
 }
 
-class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin {
+class _TimerScreenState extends State<TimerScreen>
+    with TickerProviderStateMixin {
   double progress = 0.0; // Holds the progress value for the progress bar
   late AnimationController controller;
   late Timer refreshTimer; // Timer for periodic updates
@@ -25,18 +26,18 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
 
   String get countText {
     final Duration count = duration * controller.value;
-    final int hours = count.inHours % 24;
-    final int minutes = count.inMinutes % 60;
+    final int hours = count.inHours;
 
     if (hours == 0) {
-      // Show only minutes (e.g. "20")
+      // Round up the minutes if there are any leftover seconds.
+      final int minutes = (count.inSeconds / 60).ceil();
       return '$minutes';
     } else {
-      // Show hours and minutes (e.g. "01:20")
+      // For hours, use the current logic (show hours and minutes without rounding)
+      final int minutes = count.inMinutes % 60;
       return '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}';
     }
   }
-
 
   @override
   void initState() {
@@ -56,7 +57,9 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
         Duration elapsedTime = now.difference(fromTimeUtc!);
 
         setState(() {
-          progress = totalTime.inSeconds > 0 ? elapsedTime.inSeconds / totalTime.inSeconds : 0.0;
+          progress = totalTime.inSeconds > 0
+              ? elapsedTime.inSeconds / totalTime.inSeconds
+              : 0.0;
         });
       }
     });
@@ -70,7 +73,8 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   }
 
   Future<void> fetchMeetingStatus() async {
-    final url = Uri.parse('http://localhost:8080/api/checkMeetingStatus'); // API endpoint
+    final url = Uri.parse(
+        'http://localhost:8080/api/checkMeetingStatus'); // API endpoint
 
     try {
       final response = await http.get(url);
@@ -88,65 +92,64 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
           print("[LOG] ToTime: $toTimeStr");
 
           if (fromTimeStr.isNotEmpty && toTimeStr.isNotEmpty) {
-            DateTime newFromTime = DateTime.parse(fromTimeStr); // IS ALREADY UTC+1
-            DateTime newToTime = DateTime.parse(toTimeStr); // IS ALREADY UTC+1
+            // Parse meeting times (assumed to be already in UTC+1)
+            DateTime newFromTime = DateTime.parse(fromTimeStr);
+            DateTime newToTime = DateTime.parse(toTimeStr);
 
-            // Only update fromTimeUtc if it has changed
+            // Update meeting times if needed
             if (fromTimeUtc == null || fromTimeUtc != newFromTime) {
               fromTimeUtc = newFromTime;
             }
+            toTimeUtc = newToTime;
 
-            toTimeUtc = newToTime; // Always update end time
-            DateTime now = DateTime.now().toUtc().add(const Duration(hours: 1)); // Convert current time to UTC+1
-            
-            Duration totalTime = toTimeUtc!.difference(fromTimeUtc!); // Full meeting duration
-            Duration elapsedTime = now.difference(fromTimeUtc!); // Time since meeting started
-            Duration remainingTime = toTimeUtc!.difference(now); // Time left until meeting ends
+            // Get current time in UTC+1
+            DateTime now = DateTime.now().toUtc().add(const Duration(hours: 1));
 
-            // Ensure values are within valid range
-            if (elapsedTime.isNegative) elapsedTime = Duration.zero;
-            if (remainingTime.isNegative) remainingTime = Duration.zero;
-            if (elapsedTime > totalTime) elapsedTime = totalTime;
+            Duration countdown;
+            String newStatusText;
 
-            progress = totalTime.inSeconds > 0 ? elapsedTime.inSeconds / totalTime.inSeconds : 0.0;
+            if (now.isBefore(fromTimeUtc!)) {
+              // The meeting has not started yet.
+              // Count down to the meeting start time.
+              countdown = fromTimeUtc!.difference(now);
+              newStatusText = "Meeting starts in";
+            } else {
+              // The meeting is underway.
+              // Count down to the meeting end time.
+              countdown = toTimeUtc!.difference(now);
+              if (isAvailable) {
+                newStatusText = "Meeting starts in";
+              } else {
+                newStatusText = "Meeting ends in";
+              }
+            }
 
-            print("[LOG] Total Meeting Time: ${totalTime.inSeconds} seconds");
-            print("[LOG] Elapsed Time: ${elapsedTime.inSeconds} seconds");
-            print("[LOG] Remaining Time: ${remainingTime.inSeconds} seconds");
-            print("[LOG] Progress Percentage: ${(progress * 100).toStringAsFixed(2)}%");
+            if (countdown.isNegative) countdown = Duration.zero;
 
+            setState(() {
+              duration = countdown;
+              isLoading = false;
+              statusText = newStatusText;
+              toTime = toTimeUtc.toString();
+            });
+
+            print("[LOG] Countdown Duration: ${countdown.inSeconds} seconds");
+
+            // Configure the animation controller for the new countdown duration.
             controller.stop();
             controller.reset();
-            controller.duration = remainingTime; // Set countdown duration to the remaining time
-
-            setState(() {
-              duration = remainingTime;
-              isLoading = false;
-              statusText = now.isBefore(fromTimeUtc!) ? "Meeting starts in" : "Meeting ends in";
-              toTime = toTimeUtc.toString(); // Ensure `toTime` is updated for UI logic
-
-              print(toTime);
-            });
-
-
-            print("[LOG] Updated Progress Value: $progress");
-
-            // Ensure the UI updates first before triggering animations
+            controller.duration = countdown;
+            controller.value = 1.0;
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              controller.stop();
-              controller.reset();
-              controller.duration = remainingTime; 
-              controller.value = 1.0; 
               controller.reverse(from: 1.0);
             });
-
-            controller.value = 1.0; // Start at full remaining time
-            controller.reverse(from: 1.0); // Count down to zero
           } else {
-            // No upcoming meetings
+            // No upcoming meetings: clear meeting times so the clock shows.
             setState(() {
               isLoading = false;
-              statusText = "Room available"; 
+              statusText = "Room available";
+              fromTimeUtc = null;
+              toTimeUtc = null;
             });
 
             controller.stop();
@@ -177,8 +180,9 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double circleDiameter = screenHeight * 0.2;
-    double textContainerWidth = circleDiameter * 0.8; // 80% of the circle diameter
-    
+    double textContainerWidth =
+        circleDiameter * 0.8; // 80% of the circle diameter
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: isLoading
@@ -195,39 +199,58 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
                           height: circleDiameter,
                           width: circleDiameter,
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.white,
                             shape: BoxShape.circle,
                           ),
                         ),
+                        // Updated CircularProgressIndicator widget
                         SizedBox(
                           height: circleDiameter,
                           width: circleDiameter,
                           child: CircularProgressIndicator(
                             strokeWidth: 8.0,
-                            value: (fromTimeUtc == null) ? 1.0 : (1-progress),
-                            valueColor: const AlwaysStoppedAnimation<Color>(
-                              Color.fromARGB(255, 22, 201, 49),
+                            value: (fromTimeUtc == null) ? 0.0 : (1 - progress),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              () {
+                                // Default color: Green
+                                Color progressColor =
+                                    const Color.fromARGB(255, 22, 201, 49);
+                                if (fromTimeUtc != null && toTimeUtc != null) {
+                                  Duration remainingTime = toTimeUtc!
+                                      .difference(DateTime.now()
+                                          .toUtc()
+                                          .add(const Duration(hours: 1)));
+                                  if (remainingTime.inMinutes < 1) {
+                                    progressColor = Colors
+                                        .red; // Red if 1 minute or less remains
+                                  } else if (remainingTime.inMinutes < 15) {
+                                    progressColor = Colors
+                                        .orange; // Orange if 15 minutes or less remains
+                                  }
+                                }
+                                return progressColor;
+                              }(),
                             ),
-                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Colors.grey.shade300,
                           ),
                         ),
                         AnimatedBuilder(
                           animation: controller,
                           builder: (context, child) {
                             final bool noMeeting = (fromTimeUtc == null);
-                            final String mainText = noMeeting 
-                                ? DateFormat('HH:mm').format(DateTime.now()) 
+                            final String mainText = noMeeting
+                                ? DateFormat('HH:mm').format(DateTime.now())
                                 : countText;
-                            final String status = noMeeting 
-                                ? 'No meetings scheduled' 
+                            final String status = noMeeting
+                                ? 'No meetings scheduled'
                                 : statusText;
-                            
+
                             return Stack(
-                              alignment: Alignment.center, // Base alignment for all children
+                              alignment: Alignment.center,
                               children: [
-                                // The big text in the *exact* center
+                                // The big text in the center
                                 Align(
-                                  alignment: Alignment.center, 
+                                  alignment: Alignment.center,
                                   child: Text(
                                     mainText,
                                     style: TextStyle(
@@ -237,32 +260,30 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
                                     ),
                                   ),
                                 ),
-
                                 // Text above the count text (slightly above center)
                                 Align(
-                                  alignment: const Alignment(0, -0.5), 
-                                  // adjust the second parameter to move it closer/farther from center
+                                  alignment: const Alignment(0, -0.45),
                                   child: Text(
                                     status,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: noMeeting 
-                                          ? screenHeight * 0.014 
-                                          : screenHeight * 0.0175,
+                                      fontSize: noMeeting
+                                          ? screenHeight * 0.012
+                                          : screenHeight * 0.016,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
-
                                 // Text below the count text (slightly below center)
                                 Align(
-                                  alignment: const Alignment(0, 0.55), 
-                                  // adjust the second parameter to move it closer/farther from center
+                                  alignment: const Alignment(0, 0.55),
                                   child: Text(
-                                    DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
+                                    DateFormat('EEEE, MMM d, yyyy')
+                                        .format(DateTime.now()),
                                     style: TextStyle(
-                                      color: const Color.fromARGB(255, 155, 155, 155),
+                                      color: const Color.fromARGB(
+                                          255, 155, 155, 155),
                                       fontSize: screenHeight * 0.0125,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -272,8 +293,6 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
                             );
                           },
                         ),
-
-
                       ],
                     ),
                   ),
@@ -282,5 +301,4 @@ class _TimerScreenState extends State<TimerScreen> with TickerProviderStateMixin
             ),
     );
   }
-
 }

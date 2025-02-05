@@ -13,7 +13,6 @@ import 'widget/turn_on_screen_button.dart';
 import 'widget/toggle_button_widget.dart';
 import 'widget/timer.dart';
 
-
 bool fullscreen = false;
 bool _onKey(KeyEvent event) {
   if (event is KeyDownEvent) {
@@ -35,7 +34,7 @@ bool _onKey(KeyEvent event) {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-  
+
   windowManager.setFullScreen(true);
   print('Entering automatic full-screen mode');
   fullscreen = true;
@@ -52,6 +51,7 @@ Future<void> main() async {
 }
 
 int previousIndex = -1;
+
 class SelectedIndexNotifier extends ChangeNotifier {
   int _selectedIndex = -1;
 
@@ -88,7 +88,8 @@ Future<void> startGoServer() async {
       await logFile.create();
     }
 
-    await logFile.writeAsString('Server path: $serverPath\n', mode: FileMode.append);
+    await logFile.writeAsString('Server path: $serverPath\n',
+        mode: FileMode.append);
 
     if (!File(serverPath).existsSync()) {
       final errorMsg = 'Error: $serverPath does not exist.';
@@ -104,14 +105,20 @@ Future<void> startGoServer() async {
       runInShell: true,
     );
 
-    serverProcess?.stdout.transform(SystemEncoding().decoder).listen((data) async {
+    serverProcess?.stdout
+        .transform(SystemEncoding().decoder)
+        .listen((data) async {
       print('Server stdout: $data');
-      await logFile.writeAsString('Server stdout: $data\n', mode: FileMode.append);
+      await logFile.writeAsString('Server stdout: $data\n',
+          mode: FileMode.append);
     });
 
-    serverProcess?.stderr.transform(SystemEncoding().decoder).listen((data) async {
+    serverProcess?.stderr
+        .transform(SystemEncoding().decoder)
+        .listen((data) async {
       print('Server stderr: $data');
-      await logFile.writeAsString('Server stderr: $data\n', mode: FileMode.append);
+      await logFile.writeAsString('Server stderr: $data\n',
+          mode: FileMode.append);
     });
 
     print('Go server started.');
@@ -124,7 +131,8 @@ Future<void> startGoServer() async {
     final logFilePath = p.join(exeDir, 'log.txt');
     final logFile = File(logFilePath);
 
-    await logFile.writeAsString('Error starting Go server: $e\n', mode: FileMode.append);
+    await logFile.writeAsString('Error starting Go server: $e\n',
+        mode: FileMode.append);
   } finally {
     isServerStarting = false;
   }
@@ -198,7 +206,6 @@ Future<void> sendButtonPress(int buttonID) async {
   }
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -247,14 +254,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     // Get meeting room email from config
-    String meetingRoomEmail = appConfig?['meeting_room_email'] ?? "No email configured";
+    String meetingRoomEmail =
+        appConfig?['meeting_room_email'] ?? "No email configured";
     // Extract only the part before "@"
     if (meetingRoomEmail.contains("@")) {
       meetingRoomEmail = meetingRoomEmail.split("@")[0];
@@ -307,7 +314,8 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                         aspectRatio: 1, // Ensure it's square
                         child: Container(
                           color: Color.fromRGBO(255, 255, 255, 0),
-                          child: TimerScreen(), // Timer widget inside the container
+                          child:
+                              TimerScreen(), // Timer widget inside the container
                         ),
                       ),
                     ),
@@ -331,9 +339,11 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                   Center(
                     child: Container(
                       width: screenWidth * 0.8,
-                      height: screenHeight * 0.45, // Increased height for the title
+                      height:
+                          screenHeight * 0.45, // Increased height for the title
                       padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.01, // Padding inside container
+                        vertical:
+                            screenHeight * 0.01, // Padding inside container
                       ),
                       decoration: BoxDecoration(
                         color: const Color.fromARGB(150, 0, 0, 0),
@@ -395,7 +405,8 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
 
                   // Meeting Room Email at the bottom center
                   Positioned(
-                    bottom: screenHeight * 0.02, // Slightly above the bottom edge
+                    bottom:
+                        screenHeight * 0.02, // Slightly above the bottom edge
                     left: 0,
                     right: 0,
                     child: Center(
@@ -405,7 +416,8 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
                         style: TextStyle(
                           fontSize: screenHeight * 0.0225, // Scaled text size
                           fontWeight: FontWeight.w600,
-                          color: Colors.white.withOpacity(0.25), // Semi-transparent text
+                          color: Colors.white
+                              .withOpacity(0.25), // Semi-transparent text
                         ),
                       ),
                     ),

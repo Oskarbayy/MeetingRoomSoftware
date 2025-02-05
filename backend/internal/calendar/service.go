@@ -129,21 +129,29 @@ func CheckRoomAvailability(roomEmail, accessToken string, startTime, endTime tim
 
 	var toTime string
 	var fromTime string
+	// Ensure the transition only happens when the current meeting has fully ended
 	if isCurrentlyBusy {
-		// If a meeting is happening now, set fromTime = meeting start and toTime = meeting end
 		toTime = endEventTime.Format("2006-01-02T15:04:05-07:00")
 		fromTime = startEventTime.Format("2006-01-02T15:04:05-07:00")
 	} else if startEventTime != nil {
-		// If no meeting is happening, but one is in 2 hours, start a countdown
-		toTime = startEventTime.Format("2006-01-02T15:04:05-07:00")
-		fromTime = now.Add(2 * time.Hour).Format("2006-01-02T15:04:05-07:00")
-	} else {
-		// No meeting within 2 hours
-		log.Println("No upcoming events within the next 2 hours.")
+		// Ensure we do not switch to the next event prematurely
+		if endEventTime != nil && now.Before(*endEventTime) {
+			// Current meeting is still active, do not transition yet
+			fromTime = startEventTime.Format("2006-01-02T15:04:05-07:00")
+			toTime = endEventTime.Format("2006-01-02T15:04:05-07:00")
+		} else {
+			// No active meeting, schedule the next one
+			toTime = startEventTime.Format("2006-01-02T15:04:05-07:00")
+			fromTime = startEventTime.Add(-2 * time.Hour).Format("2006-01-02T15:04:05-07:00") // Set 2 hours before toTime so its relative to something for the progress bar
+		}
+
 	}
 
 	log.Println("EMAIL:", roomEmail)
 	log.Println("Next Event Time:", startEventTime)
+	log.Println("Server Time (UTC+1):", time.Now().UTC().Add(1*time.Hour))
+	log.Println("Next Meeting Starts At:", fromTime)
+	log.Println("Current Meeting Ends At:", toTime)
 
 	return &RoomAvailability{
 		IsAvailable: !isCurrentlyBusy,
