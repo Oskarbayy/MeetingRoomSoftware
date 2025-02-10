@@ -19,44 +19,44 @@ class TurnOnScreenButton extends StatelessWidget {
     return Positioned(
       bottom: screenHeight * 0.03,
       right: screenWidth * 0.02,
-      child: Transform.translate(
-        offset: Offset(screenWidth * 0.01, screenHeight * 0.01), // Adjust the offset as needed
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Tooltip(
-            message: "Tænder den store skærm",
-            child: ElevatedButton.icon(
-              onPressed: () {
-                context.read<SelectedIndexNotifier>().setSelectedIndex(previousIndex);
-                sendButtonPress(1); // Special ID for "Turn On"
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                foregroundColor: Colors.white,
-                side: BorderSide(
-                  color: Colors.white,
-                  width: screenWidth * 0.002,
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: Tooltip(
+          message: "Tænder den store skærm",
+          child: ElevatedButton(
+            onPressed: () {
+              context
+                  .read<SelectedIndexNotifier>()
+                  .setSelectedIndex(previousIndex);
+              sendButtonPress(1); // Special ID for "Turn On"
+            },
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: EdgeInsets.all(screenHeight * 0.03),
+              backgroundColor: Colors.black.withOpacity(0.7),
+              shadowColor: Colors.greenAccent.withOpacity(0.4),
+              elevation: 10,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.power_settings_new,
+                  size: screenHeight * 0.045, // Slightly smaller icon
+                  color: Colors.greenAccent,
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(screenHeight * 0.02),
+                const SizedBox(height: 2),
+                Text(
+                  "Tænd", // Keep text shorter
+                  style: TextStyle(
+                    fontSize: screenHeight * 0.02, // Reduce font size
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'RobotoCondensed', // More compact font
+                    letterSpacing: 0.5, // Improve readability
+                    color: Colors.white,
+                  ),
                 ),
-                padding: EdgeInsets.symmetric(
-                  vertical: screenHeight * 0.025,
-                  horizontal: screenWidth * 0.03,
-                ),
-                elevation: 0,
-              ),
-              icon: Icon(
-                Icons.power_settings_new,
-                size: screenHeight * 0.06,
-              ),
-              label: Text(
-                "Tænd Skærm",
-                style: TextStyle(
-                  fontSize: screenHeight * 0.03,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              ],
             ),
           ),
         ),
