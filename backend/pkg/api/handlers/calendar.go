@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -43,6 +44,7 @@ func loadEnv() error {
 func (h *Handlers) GetCurrentMeetingStatusFromEnv(w http.ResponseWriter, r *http.Request) {
 	// Load environment variables
 	if err := loadEnv(); err != nil {
+		log.Println(".env file is not properly setup... Make sure it exists and has all the authentications needed... clientID, clientSecret, tenantID")
 		http.Error(w, fmt.Sprintf("Failed to load environment variables: %v", err), http.StatusInternalServerError)
 		return
 	}
