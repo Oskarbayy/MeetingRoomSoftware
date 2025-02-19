@@ -8,7 +8,6 @@ import (
 
 // Config holds all configuration options for your application.
 type Config struct {
-	Device           string            `json:"device"`
 	BaudRate         int               `json:"baud_rate"`
 	DataBits         int               `json:"data_bits"`
 	StopBits         int               `json:"stop_bits"`

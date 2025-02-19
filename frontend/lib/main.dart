@@ -1,4 +1,4 @@
-// Warning code is not modular !!!xd
+// Warning code is not modular !!! D:
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -13,6 +13,7 @@ import 'widget/turn_on_screen_button.dart';
 import 'widget/toggle_button_widget.dart';
 import 'widget/timer.dart';
 
+String appVersion = 'v0.1.1';
 bool fullscreen = false;
 bool _onKey(KeyEvent event) {
   if (event is KeyDownEvent) {
@@ -262,10 +263,14 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
     // Get meeting room email from config
     String meetingRoomEmail =
         appConfig?['meeting_room_email'] ?? "No email configured";
+
     // Extract only the part before "@"
     if (meetingRoomEmail.contains("@")) {
       meetingRoomEmail = meetingRoomEmail.split("@")[0];
     }
+
+    // Append appVersion to meetingRoomEmail by concatenating strings
+    meetingRoomEmail = '$meetingRoomEmail $appVersion';
 
     return Scaffold(
       body: LayoutBuilder(

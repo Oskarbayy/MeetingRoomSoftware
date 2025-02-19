@@ -2,7 +2,9 @@ package serialhandler
 
 import (
 	"backend/pkg/utils"
+	"errors"
 	"log"
+	"strings"
 	"time"
 
 	"go.bug.st/serial"
@@ -13,14 +15,41 @@ type Port struct {
 	Config     Config
 }
 
+var selectedPort string
+
+// NewPort opens the first available serial port containing "COM" instead of using config.Device (semi hardcoded name)
 func NewPort(config Config) (*Port, error) {
+	// List available serial ports
+	ports, err := serial.GetPortsList()
+	if err != nil {
+		return nil, err
+	}
+
+	// Find a port containing "COM" (case-insensitive)
+
+	for _, port := range ports {
+		if strings.Contains(strings.ToLower(port), "com") {
+			selectedPort = port
+			break
+		}
+	}
+
+	if selectedPort == "" {
+		return nil, errors.New("no suitable COM port found")
+	}
+
+	log.Printf("Connecting to port: %s", selectedPort)
+
+	// Configure serial connection
 	mode := &serial.Mode{
 		BaudRate: config.BaudRate,
 		DataBits: config.DataBits,
 		Parity:   utils.ParseParity(config.Parity),
 		StopBits: utils.ParseStopBits(config.StopBits),
 	}
-	sp, err := serial.Open(config.Device, mode) // sp  serialPort
+
+	// Open the selected serial port
+	sp, err := serial.Open(selectedPort, mode)
 	if err != nil {
 		return nil, err
 	}
@@ -29,8 +58,6 @@ func NewPort(config Config) (*Port, error) {
 	return &Port{serialPort: sp, Config: config}, nil
 }
 
-// Object oriented - Methods to Port struct
-
 // Writes the command to the serial port
 func (p *Port) Write(command string) error {
 	_, err := p.serialPort.Write([]byte(command + "\r\n"))
@@ -38,7 +65,7 @@ func (p *Port) Write(command string) error {
 		log.Printf("Failed to write to serial port: %v", err)
 		return err
 	}
-	log.Printf("Command sent to %s: %s", p.Config.Device, command)
+	log.Printf("Command sent to %s: %s", selectedPort, command)
 
 	//Wait for acknowledgment
 	if p.WaitForAcknowledgment(5) != true { // Wait for up to 5 seconds

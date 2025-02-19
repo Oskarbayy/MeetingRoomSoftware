@@ -1,5 +1,4 @@
 {
-    "device": "COM11",
     "baud_rate": 19200,
     "data_bits": 8,
     "stop_bits": 1,
@@ -15,7 +14,7 @@
     "startup_commands": [
         "swmode default",
         "sw on",
-        "cec auto"
+        "cec off"
     ],
     "meeting_room_email": "mr-gamma@vestergaardcompany.com",
     "tv_broadcast_ip": "192.168.196.255",
